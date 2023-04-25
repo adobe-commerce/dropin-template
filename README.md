@@ -2,6 +2,10 @@
 
 ## Getting Started
 
+### Install Dependencies
+
+`npm install`
+
 ### Generate new config
 
 `npx elsie generate config --name <Domain>`
@@ -9,17 +13,17 @@
 ### Launch development environment
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### Build
 
 ```bash
-yarn build
+npm run build
 ```
 
 ### Tests
 
 ```bash
-yarn test
+npm run test
 ```
