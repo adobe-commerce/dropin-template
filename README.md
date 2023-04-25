@@ -4,16 +4,35 @@
 
 ### Install Dependencies
 
-`npm install`
+```bash
+npm install
+```
 
 ### Generate new config
 
-`npx elsie generate config --name <Domain>`
+```bash
+npx elsie generate config --name <Domain>
+```
 
 ### Launch development environment
 
 ```bash
 npm run dev
+```
+
+### Generate new API Function
+```bash
+npx elsie generate api --name myApiFunction
+```
+
+### Generate new UI Component
+```bash
+npx elsie generate component --name MyUIComponent
+```
+
+### Generate new UI Frontend Container
+```bash
+npx elsie generate container --name MyContainer
 ```
 
 ### Build
