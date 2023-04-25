@@ -1,0 +1,32 @@
+{
+    "private": true,
+    "name": "my-domain-package",
+    "version": "0.1.0",
+    "license": "MIT",
+    "engines": {
+        "node": ">=16"
+    },
+    "files": [
+        "*"
+    ],
+    "sideEffects": false,
+    "scripts": {
+        "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry",
+        "build-storybook": "storybook build",
+        "serve": "PORT=3002 webpack serve --mode=development",
+        "lint": "eslint '*/**/*.{ts,tsx}'",
+        "dev": "concurrently --names \"WEBPACK,STORYBOOK\" \"yarn serve\" \"yarn storybook\"",
+        "prebuild": "yarn cleanup",
+        "build": "webpack --mode=production",
+        "analyze": "ANALYZE=true yarn build",
+        "test": "jest",
+        "cleanup": "rimraf dist"
+    },
+    "dependencies": {
+        "@adobe/elsie": "latest",
+        "preact": "^10.3.2"
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.1"
+    }
+}
