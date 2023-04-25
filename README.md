@@ -1,4 +1,4 @@
-# My Domain Packages
+# My Domain Package
 
 ## Getting Started
 
