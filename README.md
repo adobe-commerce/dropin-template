@@ -17,7 +17,7 @@ npx elsie generate config --name <Domain>
 ### 3. Update Mesh Endpoint (for development only)
 
 ```bash
-code .env.local
+.env.local
 ```
 
 ### 4. Launch development environment
