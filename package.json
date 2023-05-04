@@ -14,7 +14,7 @@
         "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry",
         "build-storybook": "storybook build",
         "serve": "PORT=3002 webpack serve --mode=development",
-        "lint": "eslint '*/**/*.{ts,tsx}'",
+        "lint": "eslint '*/**/*.{ts,tsx}' --max-warnings=0",
         "dev": "concurrently --names \"WEBPACK,STORYBOOK\" \"yarn serve\" \"yarn storybook\"",
         "prebuild": "yarn cleanup",
         "build": "webpack --mode=production",
