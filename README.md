@@ -26,9 +26,6 @@ npx elsie generate config --name <Domain>
 npm run dev
 ```
 
-- Storybook: http://localhost:6006/
-- ESM Bundles: http://localhost:3002/
-
 ### 5. Generate new API Function
 
 ```bash
