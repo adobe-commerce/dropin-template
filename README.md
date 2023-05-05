@@ -26,19 +26,25 @@ npx elsie generate config --name <Domain>
 npm run dev
 ```
 
+- Storybook: http://localhost:6006/
+- ESM Bundles: http://localhost:3002/
+
 ### 5. Generate new API Function
+
 ```bash
-npx elsie generate api --name myApiFunction
+npx elsie generate api --name <myApiFunction>
 ```
 
 ### 6. Generate new UI Component
+
 ```bash
-npx elsie generate component --name MyUIComponent
+npx elsie generate component --name <myUIComponent>
 ```
 
 ### 7. Generate new UI Frontend Container
+
 ```bash
-npx elsie generate container --name MyContainer
+npx elsie generate container --name <MyContainer>
 ```
 
 ### 8. Run unit tests
