@@ -11,19 +11,18 @@
     ],
     "sideEffects": false,
     "scripts": {
-        "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry",
-        "build-storybook": "storybook build",
-        "serve": "PORT=3002 webpack serve --mode=development",
-        "lint": "eslint '*/**/*.{ts,tsx}' --max-warnings=0",
-        "dev": "concurrently --names \"WEBPACK,STORYBOOK\" \"yarn serve\" \"yarn storybook\"",
-        "prebuild": "yarn cleanup",
-        "build": "webpack --mode=production",
-        "analyze": "ANALYZE=true yarn build",
-        "test": "jest",
-        "cleanup": "rimraf dist"
+        "dev": "elsie dev",
+        "storybook": "elsie storybook",
+        "serve": "elsie serve",
+        "lint": "elsie lint --max-warnings=0",
+        "test": "elsie test",
+        "build": "elsie build",
+        "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
         "@adobe/elsie": "latest",
+        "@adobe/event-bus": "latest",
+        "@adobe/fetch-graphql": "latest",
         "preact": "^10.3.2"
     },
     "devDependencies": {
