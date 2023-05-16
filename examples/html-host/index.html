@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>HTML Example</title>
+
+    <!-- 
+    JavaScript import maps are now supported cross-browser
+    See: https://caniuse.com/?search=importmap
+
+    This example uses the es-module-shims polyfill to enable support in browsers that do not yet support import maps.
+    -->
+    <script
+      async
+      src="https://ga.jspm.io/npm:es-module-shims@1.7.2/dist/es-module-shims.js"
+    ></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "elsie-sdk/": "https://d2n8p7fts4cog9.cloudfront.net/elsie/develop/",
+          "my-pkg/": "http://localhost:3003/"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <script type="module">
+      // Event Bus
+      import { events } from 'elsie-sdk/event-bus.js';
+
+      // GraphQL Client
+      import { setEndpoint, fetchGraphQl } from 'elsie-sdk/fetch-graphql.js';
+
+      // Initializer
+      import { Initializer, initializers } from 'elsie-sdk/initializer.js';
+
+      // My Domain Package
+      // import { initialize as pkg } from 'my-pkg/api.js';
+
+      // import { render as provider } from 'my-pkg/render.js';
+      // import { <Container> } from 'my-pkg/containers/<Container>.js';
+
+      // Initialize GraphQl Client
+      setEndpoint(
+        // Mesh Endpoint
+        'https://graph.adobe.io/api/63e62e43-8eb8-45a2-b0f6-f7c3845093db/graphql?api_key=2c6d06bb3aef463db8485c88a90f563f'
+      );
+
+      // Enable events logger
+      events.enableLogger(true);
+
+      // Register Initializers
+      // initializers.register(pkg);
+
+      // Mount Initializers
+      window.addEventListener('load', initializers.mount);
+
+      // Render Container
+      // provider.render(<Container>)(document.getElementById('my-pkg'));
+
+      // Render Store Data
+      const $data = document.getElementById('data');
+
+      fetchGraphQl(`
+        query STORE {
+          storeConfig {
+            store_name: locale
+            store_locale: locale
+          }
+        }
+      `).then(({ data }) => {
+        $data.innerText = JSON.stringify(data, null, 2);
+      });
+
+      // Listen for user athentication
+      const $title = document.getElementById('title');
+
+      events.on('authenticated', (authenticated) => {
+        console.log({ authenticated });
+        $title.innerText = authenticated ? '🔐' : '🔓';
+      });
+    </script>
+
+    <div id="app">
+      <h1 id="title">👩‍💻</h1>
+
+      <div class="cards">
+        <div class="card card--black">
+          <h2 class="heading">App Shell</h2>
+
+          <!-- 
+          <fieldset class="actions">
+            <legend>API Functions</legend>
+
+            <button id="action-1" disabled>Action</button>
+          </fieldset> 
+          -->
+
+          <code data-label="fetchGraphQl">
+            <pre id="data">⏳ Loading...</pre>
+          </code>
+        </div>
+
+        <!-- <div class="card card--white">
+          <h2 class="heading">Container (MFE)</h2>
+
+          <div id="my-pkg" class="container"></div>
+        </div> -->
+      </div>
+    </div>
+
+    <style>
+      @import '/styles.css';
+      @import '/example.css';
+    </style>
+  </body>
+</html>
