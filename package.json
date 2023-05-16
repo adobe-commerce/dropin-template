@@ -13,7 +13,7 @@
     "scripts": {
         "dev": "elsie dev",
         "storybook": "elsie storybook",
-        "serve": "elsie serve",
+        "serve": "elsie serve & http-server ../examples/html-host -c-1 -p 3000 -d -s -o",
         "lint": "elsie lint --max-warnings=0",
         "test": "elsie test",
         "build": "elsie build",
@@ -26,6 +26,7 @@
         "preact": "^10.3.2"
     },
     "devDependencies": {
-        "dotenv": "^16.0.1"
+        "dotenv": "^16.0.1",
+        "http-server": "^14.1.1"
     }
 }
