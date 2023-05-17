@@ -26,6 +26,11 @@
         }
       }
     </script>
+
+    <style>
+      /* Base Design System Tokens */
+      /* .elsie-base-design { } */
+    </style>
   </head>
 
   <body>
@@ -69,8 +74,14 @@
       fetchGraphQl(`
         query STORE {
           storeConfig {
-            store_name: locale
-            store_locale: locale
+            store_name
+            store_code
+          }
+
+          customer {
+            firstname
+            lastname
+            email
           }
         }
       `).then(({ data }) => {
@@ -81,25 +92,22 @@
       const $title = document.getElementById('title');
 
       events.on('authenticated', (authenticated) => {
-        console.log({ authenticated });
         $title.innerText = authenticated ? '🔐' : '🔓';
       });
     </script>
 
     <div id="app">
-      <h1 id="title">👩‍💻</h1>
+      <h1 id="title">💻</h1>
 
       <div class="cards">
         <div class="card card--black">
           <h2 class="heading">App Shell</h2>
 
-          <!-- 
           <fieldset class="actions">
             <legend>API Functions</legend>
 
             <button id="action-1" disabled>Action</button>
-          </fieldset> 
-          -->
+          </fieldset>
 
           <code data-label="fetchGraphQl">
             <pre id="data">⏳ Loading...</pre>

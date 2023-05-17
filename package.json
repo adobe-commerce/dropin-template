@@ -11,7 +11,7 @@
     ],
     "sideEffects": false,
     "scripts": {
-        "dev": "elsie dev & npm run sandbox",
+        "dev": "npm run storybook & npm run serve & npm run sandbox;",
         "storybook": "elsie storybook",
         "serve": "elsie serve & npm run sandbox",
         "sandbox": "http-server ./examples/html-host -c-1 -p 3000 -o",
