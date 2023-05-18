@@ -11,19 +11,19 @@
     ],
     "sideEffects": false,
     "scripts": {
-        "dev": "npm run storybook & npm run serve & npm run sandbox;",
-        "storybook": "elsie storybook",
-        "serve": "elsie serve & npm run sandbox",
+        "dev": "npm run storybook & npm run serve",
+        "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry",
+        "serve": "PORT=3003 webpack serve --mode=production & npm run sandbox",
         "sandbox": "http-server ./examples/html-host -c-1 -p 3000 -o",
-        "lint": "elsie lint --max-warnings=0",
-        "test": "elsie test",
-        "build": "elsie build",
-        "analyze": "ANALYZE=true elsie build"
+        "lint": "eslint '*/**/*.{ts,tsx}' --max-warnings=0",
+        "test": "jest",
+        "build": "webpack --mode=production",
+        "analyze": "ANALYZE=true webpack --mode=production"
     },
     "dependencies": {
-        "@adobe/elsie": "~0.1.0-alpha",
-        "@adobe/event-bus": "~0.1.0-alpha",
-        "@adobe/fetch-graphql": "~0.1.0-alpha",
+        "@adobe/elsie": "alpha",
+        "@adobe/event-bus": "alpha",
+        "@adobe/fetch-graphql": "alpha",
         "preact": "^10.3.2"
     },
     "devDependencies": {
