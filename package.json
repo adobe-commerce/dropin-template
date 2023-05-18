@@ -12,7 +12,7 @@
     "sideEffects": false,
     "scripts": {
         "dev": "npm run storybook & npm run serve",
-        "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry",
+        "storybook": "storybook dev -h localhost -p 6006 --disable-telemetry --quiet",
         "serve": "PORT=3003 webpack serve --mode=production & npm run sandbox",
         "sandbox": "http-server ./examples/html-host -c-1 -p 3000 -o",
         "lint": "eslint '*/**/*.{ts,tsx}' --max-warnings=0",
