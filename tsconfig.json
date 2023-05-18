@@ -7,6 +7,6 @@
       "@adobe/elsie/*": ["./node_modules/@adobe/elsie/src/*"]
     }
   },
-  "include": ["src", "types", "node_module/@adobe/elsie"],
-  "exclude": ["node_module"]
+  "include": ["src", "types"],
+  "exclude": ["node_modules"]
 }
