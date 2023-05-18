@@ -21,13 +21,14 @@
         "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
-        "@adobe/elsie": "alpha",
-        "@adobe/event-bus": "alpha",
-        "@adobe/fetch-graphql": "alpha",
+        "@adobe/elsie": "~0.1.0-alpha",
+        "@adobe/event-bus": "~0.1.0-alpha",
+        "@adobe/fetch-graphql": "~0.1.0-alpha",
         "preact": "^10.3.2"
     },
     "devDependencies": {
         "dotenv": "^16.0.1",
-        "http-server": "14.1.1"
+        "http-server": "14.1.1",
+        "jest": "^27.0.1"
     }
 }
