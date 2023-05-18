@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { UIProvider } from '@adobe/elsie/components';
 import { Lang } from '@adobe/elsie/i18n';
-import { events } from '@adobe/elsie/lib';
+import { events } from '@adobe/event-bus';
 
 // Langs
 const langDefinitions = {

@@ -4,9 +4,9 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@adobe/elsie/*": ["./node_module/@adobe/elsie/src/*"]
+      "@adobe/elsie/*": ["./node_modules/@adobe/elsie/src/*"]
     }
   },
-  "include": ["src", "types"],
+  "include": ["src", "types", "node_module/@adobe/elsie"],
   "exclude": ["node_module"]
 }

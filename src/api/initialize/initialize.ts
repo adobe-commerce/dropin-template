@@ -1,15 +1,18 @@
-import {
-  State,
-  Initializer,
-  // events,
-} from '@adobe/elsie/lib';
+import { Config, Initializer } from '@adobe/elsie/lib';
+// import { events } from '@adobe/event-bus';
 
-type Config = {};
+type ConfigProps = {};
 
-export const config = new State<Config>({});
+export const config = new Config<ConfigProps>({});
 
 export const initialize = new Initializer({
-  init: async (_config: Config) => {},
+  init: async (_config?: ConfigProps) => {
+    if (_config) config.setConfig(_config);
+  },
 
-  listeners: () => [],
+  listeners: () => [
+    // events.on('authenticated', (authenticated) => {
+    //   console.log('authenticated', authenticated);
+    // }),
+  ],
 });

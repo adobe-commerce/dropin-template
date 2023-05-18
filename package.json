@@ -24,6 +24,7 @@
         "@adobe/elsie": "alpha",
         "@adobe/event-bus": "alpha",
         "@adobe/fetch-graphql": "alpha",
+        "@adobe/storefront-design": "alpha",
         "preact": "^10.3.2"
     },
     "devDependencies": {
