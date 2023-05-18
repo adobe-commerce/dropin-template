@@ -21,9 +21,9 @@
         "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
-        "@adobe/elsie": "latest",
-        "@adobe/event-bus": "latest",
-        "@adobe/fetch-graphql": "latest",
+        "@adobe/elsie": "alpha",
+        "@adobe/event-bus": "alpha",
+        "@adobe/fetch-graphql": "alpha",
         "preact": "^10.3.2"
     },
     "devDependencies": {
