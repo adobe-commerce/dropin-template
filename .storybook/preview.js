@@ -1,5 +1,6 @@
 import { DocsPage, DocsContainer } from '@storybook/addon-docs';
 import { setEndpoint } from '@adobe/fetch-graphql';
+import { initializers } from '@adobe/elsie/lib';
 import { events } from '@adobe/event-bus';
 import { Provider } from '../src/render/Provider';
 import { initialize as pkg } from '../src/api';
