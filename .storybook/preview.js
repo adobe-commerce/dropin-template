@@ -27,6 +27,16 @@ export const decorators = [
 ];
 
 export const parameters = {
+  docs: {
+    container: (props) => {
+      return (
+        <Provider>
+          <DocsContainer {...props} />
+        </Provider>
+      );
+    },
+    page: DocsPage,
+  },
   options: {
     storySort: {
       order: [
@@ -48,15 +58,5 @@ export const parameters = {
         '*',
       ],
     },
-  },
-  docs: {
-    container: (props) => {
-      return (
-        <Provider>
-          <DocsContainer {...props} />
-        </Provider>
-      );
-    },
-    page: DocsPage,
   },
 };
