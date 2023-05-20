@@ -13,11 +13,12 @@
     "scripts": {
         "dev": "npm run storybook & npm run serve",
         "storybook": "elsie storybook",
-        "serve": "elsie serve",
+        "serve": "elsie serve & npm run sandbox",
         "lint": "elsie lint --max-warnings=0",
         "test": "elsie test",
         "build": "elsie build",
-        "analyze": "ANALYZE=true elsie build"
+        "analyze": "ANALYZE=true elsie build",
+        "sandbox": "http-server ./examples/html-host -c-1 -p 3000 -d -o"
     },
     "dependencies": {
         "@adobe/elsie": "alpha",
