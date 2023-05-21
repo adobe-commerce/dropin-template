@@ -1,3 +1,5 @@
 const baseConfig = require('@adobe/elsie/config/jest');
 
-module.exports = { ...baseConfig };
+module.exports = {
+  ...baseConfig,
+};
