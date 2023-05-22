@@ -29,19 +29,19 @@ npm run dev
 ### Generate new UI Component
 
 ```bash
-npx elsie generate component --name <myUIComponent>
+npx elsie generate component --pathname <myUIComponent>
 ```
 
 ### Generate new API Function
 
 ```bash
-npx elsie generate api --name <myApiFunction>
+npx elsie generate api --pathname <myApiFunction>
 ```
 
 ### Generate new UI Frontend Container
 
 ```bash
-npx elsie generate container --name <MyContainer>
+npx elsie generate container --pathname <MyContainer> --group Containers
 ```
 
 ### Run unit tests
