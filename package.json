@@ -11,7 +11,7 @@
     ],
     "sideEffects": false,
     "scripts": {
-        "dev": "concurrently 'yarn run storybook' 'yarn run serve'",
+        "dev": "concurrently 'npm run storybook' 'npm run serve'",
         "storybook": "elsie storybook",
         "serve": "concurrently 'elsie serve' 'http-server ./examples/html-host -c-1 -p 3000 -d -o'",
         "lint": "elsie lint --max-warnings=0",
