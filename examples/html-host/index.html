@@ -22,7 +22,7 @@
       {
         "imports": {
           "elsie-sdk/": "https://d2n8p7fts4cog9.cloudfront.net/elsie/develop/",
-          "my-pkg/": "http://localhost:3003/"
+          "my-pkg/": "http://localhost:3002/"
         }
       }
     </script>
@@ -45,7 +45,7 @@
       import { Initializer, initializers } from 'elsie-sdk/initializer.js';
 
       // My Domain Package
-      // import { initialize as pkg } from 'my-pkg/api.js';
+      import { initialize as pkg } from 'my-pkg/api.js';
 
       // import { render as provider } from 'my-pkg/render.js';
       // import { <Container> } from 'my-pkg/containers/<Container>.js';
@@ -60,12 +60,12 @@
       events.enableLogger(true);
 
       // Register Initializers
-      // initializers.register(pkg);
+      initializers.register(pkg);
 
       // Mount Initializers
       window.addEventListener('load', initializers.mount);
 
-      // Render Container
+      // Render Containers
       // provider.render(<Container>)(document.getElementById('my-pkg'));
 
       // Render Store Data
@@ -114,11 +114,13 @@
           </code>
         </div>
 
-        <!-- <div class="card card--white">
-          <h2 class="heading">Container (MFE)</h2>
+        <!-- 
+        <div class="card card--white">
+          <h2 class="heading">Frontend Containers</h2>
 
           <div id="my-pkg" class="container"></div>
-        </div> -->
+        </div>
+         -->
       </div>
     </div>
 
