@@ -71,28 +71,35 @@
       // Render Store Data
       const $data = document.getElementById('data');
 
-      fetchGraphQl(`
-        query STORE {
-          storeConfig {
-            store_name
-            store_code
-          }
+      const fetchStoreData = () => {
+        return fetchGraphQl(`
+          query STORE {
+            storeConfig {
+              store_name
+              store_code
+            }
 
-          customer {
-            firstname
-            lastname
-            email
+            customer {
+              firstname
+              lastname
+              email
+            }
           }
-        }
-      `).then(({ data }) => {
-        $data.innerText = JSON.stringify(data, null, 2);
-      });
+        `).then(({ data }) => {
+          $data.innerText = JSON.stringify(data, null, 2);
+        });
+      };
+
+      fetchStoreData();
 
       // Listen for user athentication
       const $title = document.getElementById('title');
 
       events.on('authenticated', (authenticated) => {
         $title.innerText = authenticated ? '🔐' : '🔓';
+
+        // Re-fetch store data when user logs in/out
+        fetchStoreData();
       });
     </script>
 
