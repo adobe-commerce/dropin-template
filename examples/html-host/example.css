@@ -13,11 +13,6 @@
   flex: 1;
 }
 
-.card--white {
-  background: white;
-  color: black;
-}
-
 .card--black {
   background: black;
   color: white;
@@ -94,4 +89,31 @@ code::before {
   padding: 1rem;
   border-radius: 0.5rem;
   text-align: left;
+}
+
+.containers {
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  flex: 1;
+}
+
+.container {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  text-align: initial;
+}
+
+.container:empty::before {
+  content: 'Nothing here yet';
+  opacity: 0.5;
+  font-size: 0.8rem;
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+  padding: 1rem;
 }
