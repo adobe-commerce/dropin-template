@@ -38,7 +38,7 @@ npx elsie generate component --pathname <myUIComponent>
 npx elsie generate api --pathname <myApiFunction>
 ```
 
-### Generate new UI Frontend Container
+### Generate new Frontend Container
 
 ````bash
 npx elsie generate container --pathname <MyContainer>
