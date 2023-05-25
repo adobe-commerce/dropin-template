@@ -40,8 +40,9 @@ npx elsie generate api --pathname <myApiFunction>
 
 ### Generate new Frontend Container
 
-````bash
+```bash
 npx elsie generate container --pathname <MyContainer>
+```
 
 ### Run unit tests
 
