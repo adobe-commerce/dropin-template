@@ -90,8 +90,6 @@
         });
       };
 
-      fetchStoreData();
-
       // Listen for user athentication
       const $title = document.getElementById('title');
 
@@ -100,7 +98,7 @@
 
         // Re-fetch store data when user logs in/out
         fetchStoreData();
-      });
+      }, { eager: true });
     </script>
 
     <div id="app">
