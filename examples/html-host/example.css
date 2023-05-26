@@ -106,6 +106,7 @@ code::before {
   border: 2px dashed #ccc;
   border-radius: 8px;
   text-align: initial;
+  padding: 1rem;
 }
 
 .container:empty::before {
@@ -115,5 +116,4 @@ code::before {
   display: block;
   padding: 0.5rem;
   text-align: center;
-  padding: 1rem;
 }
