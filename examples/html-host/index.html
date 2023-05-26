@@ -94,7 +94,7 @@
       const $title = document.getElementById('title');
 
       events.on('authenticated', (authenticated) => {
-        $title.innerText = authenticated ? '🔐' : '🔓';
+        $title.innerText = authenticated ? '🔓' : '🔒';
 
         // Re-fetch store data when user logs in/out
         fetchStoreData();
