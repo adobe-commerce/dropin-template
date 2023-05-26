@@ -98,7 +98,9 @@
 
         // Re-fetch store data when user logs in/out
         fetchStoreData();
-      }, { eager: true });
+      });
+
+      fetchStoreData();
     </script>
 
     <div id="app">
