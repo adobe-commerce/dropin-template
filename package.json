@@ -13,7 +13,7 @@
     "scripts": {
         "dev": "concurrently 'npm run storybook' 'npm run serve'",
         "storybook": "elsie storybook",
-        "serve": "concurrently 'elsie serve' 'http-server ./examples/html-host -c-1 -p 3000 -d -o'",
+        "serve": "concurrently 'elsie serve' 'wait-on tcp:${PORT:=3002} && http-server ./examples/html-host -c-1 -p 3000 -d -o'",
         "lint": "elsie lint --max-warnings=0",
         "test": "elsie test",
         "build": "elsie build",
@@ -29,6 +29,7 @@
     "devDependencies": {
         "concurrently": "^8.0.1",
         "http-server": "14.1.1",
-        "jest": "^27.0.1"
+        "jest": "^27.0.1",
+        "wait-on": "^7.0.1"
     }
 }
