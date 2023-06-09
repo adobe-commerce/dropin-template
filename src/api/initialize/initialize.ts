@@ -1,13 +1,11 @@
-import { Config, Initializer } from '@adobe/elsie/lib';
+import { Initializer } from '@adobe/elsie/lib';
 // import { events } from '@adobe/event-bus';
 
 type ConfigProps = {};
 
-export const config = new Config<ConfigProps>({});
-
-export const initialize = new Initializer({
-  init: async (_config?: ConfigProps) => {
-    if (_config) config.setConfig(_config);
+export const initialize = new Initializer<ConfigProps>({
+  init: async (config) => {
+    //
   },
 
   listeners: () => [
@@ -16,3 +14,5 @@ export const initialize = new Initializer({
     // }),
   ],
 });
+
+export const config = initialize.config;
