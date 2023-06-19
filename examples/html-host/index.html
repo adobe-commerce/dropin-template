@@ -39,7 +39,7 @@
       import { events } from 'elsie-sdk/event-bus.js';
 
       // GraphQL Client
-      import { setEndpoint, fetchGraphQl } from 'elsie-sdk/fetch-graphql.js';
+      import * as mesh from 'elsie-sdk/fetch-graphql.js';
 
       // Initializer
       import { initializers } from 'elsie-sdk/initializer.js';
@@ -51,7 +51,7 @@
       // import <Container> from 'my-pkg/containers/<Container>.js';
 
       // Initialize GraphQl Client (Mesh)
-      setEndpoint(
+      mesh.setEndpoint(
         // Mesh Endpoint
         'https://graph.adobe.io/api/63e62e43-8eb8-45a2-b0f6-f7c3845093db/graphql?api_key=2c6d06bb3aef463db8485c88a90f563f'
       );
@@ -74,36 +74,38 @@
       // Render Store Data
       const $data = document.getElementById('data');
 
-      const fetchStoreData = () => {
-        return fetchGraphQl(`
-          query STORE {
-            storeConfig {
-              store_name
-              store_code
-            }
-
-            customer {
-              firstname
-              lastname
-              email
-            }
-          }
-        `).then(({ data }) => {
-          $data.innerText = JSON.stringify(data, null, 2);
-        });
-      };
-
       // Listen for user athentication
       const $title = document.getElementById('title');
 
-      events.on('authenticated', (authenticated) => {
-        $title.innerText = authenticated ? '🔓' : '🔒';
+      events.on(
+        'authenticated',
+        (authenticated) => {
+          $title.innerText = authenticated ? '🔓' : '🔒';
 
-        // Re-fetch store data when user logs in/out
-        fetchStoreData();
-      });
+          // Fetch store data when user logs in/out
+          mesh
+            .fetchGraphQl(
+              `
+                query STORE {
+                  storeConfig {
+                    store_name
+                    store_code
+                  }
 
-      fetchStoreData();
+                  customer {
+                    firstname
+                    lastname
+                    email
+                  }
+                }
+              `
+            )
+            .then(({ data }) => {
+              $data.innerText = JSON.stringify(data, null, 2);
+            });
+        },
+        { eager: true } // fetch it on runtime using last state
+      );
     </script>
 
     <div id="app">
