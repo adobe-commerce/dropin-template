@@ -20,10 +20,10 @@
         "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
-        "@adobe/elsie": "~0.1.3",
-        "@adobe/event-bus": "~0.1.0",
-        "@adobe/fetch-graphql": "~0.1.1",
-        "@adobe/storefront-design": "~0.1.0",
+        "@adobe/elsie": "latest",
+        "@adobe/event-bus": "latest",
+        "@adobe/fetch-graphql": "latest",
+        "@adobe/storefront-design": "latest",
         "preact": "^10.3.2"
     },
     "devDependencies": {
