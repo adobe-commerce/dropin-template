@@ -1,3 +1,3 @@
-const baseConfig = require('@adobe/elsie/config/webpack');
-
-module.exports = { ...baseConfig };
+module.exports = {
+  extends: require.resolve('@adobe/elsie/config/webpack'),
+};
