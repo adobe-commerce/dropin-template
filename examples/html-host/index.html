@@ -7,6 +7,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>HTML Example</title>
 
+    <link rel="preconnect" href="https://cdn.skypack.dev" crossorigin />
+
     <!-- 
     JavaScript import maps are now supported cross-browser
     See: https://caniuse.com/?search=importmap
@@ -21,7 +23,7 @@
     <script type="importmap">
       {
         "imports": {
-          "elsie-sdk/": "https://d2n8p7fts4cog9.cloudfront.net/elsie/0.1.3/",
+          "@dropins/elsie/": "https://cdn.skypack.dev/@dropins/elsie@~0.4.0-beta/",
           "my-pkg/": "http://localhost:3002/"
         }
       }
@@ -36,13 +38,13 @@
   <body>
     <script type="module">
       // Event Bus
-      import { events } from 'elsie-sdk/event-bus.js';
+      import { events } from '@dropins/elsie/event-bus.js';
 
       // GraphQL Client
-      import * as mesh from 'elsie-sdk/fetch-graphql.js';
+      import * as mesh from '@dropins/elsie/fetch-graphql.js';
 
       // Initializer
-      import { initializers } from 'elsie-sdk/initializer.js';
+      import { initializers } from '@dropins/elsie/initializer.js';
 
       // My Domain Package
       import * as pkg from 'my-pkg/api.js';
@@ -135,9 +137,7 @@
       </div>
     </div>
 
-    <style>
-      @import '/styles.css';
-      @import '/example.css';
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="example.css" />
   </body>
 </html>
