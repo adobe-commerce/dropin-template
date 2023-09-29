@@ -1,0 +1,25 @@
+{
+  "templateVersion": "0.1",
+  "product": {
+    "name": "Domain Package Template",
+    "description": "Starter template for building Adobe DropIns (composable components)."
+  },
+  "contacts": {
+    "team": {
+      "name": "CORGEESE",
+      "DL": "GRP-COMMERCE-STOREFRONT",
+      "slackChannel": "#commerce-storefront-core"
+    }
+  },
+  "ticketTracker": {
+    "functionalJiraQueue": {
+      "projectKey": "USF",
+      "component": "Elsie SDK"
+    },
+    "securityJiraQueue": {
+      "projectKey": "MAGREQ",
+      "component": "MAGREQ/Unified Storefront"
+    }
+  },
+  "productionCodeBranches": ["main"]
+}
