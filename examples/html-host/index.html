@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>HTML Example</title>
 
-    <link rel="preconnect" href="https://www.unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
 
     <!-- 
     JavaScript import maps are now supported cross-browser
@@ -23,7 +23,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@dropins/elsie/": "https://www.unpkg.com/@dropins/elsie@latest/",
+          "@dropins/elsie/": "https://unpkg.com/@dropins/elsie@latest/",
           "my-pkg/": "http://localhost:3002/"
         }
       }
@@ -68,7 +68,7 @@
       initializers.register(pkg.initialize);
 
       // Mount Initializers
-      window.addEventListener('load', initializers.mount);
+      initializers.mount();
 
       // Render Containers
       // provider.render(<Container>)(document.getElementById('my-pkg'));
@@ -108,6 +108,9 @@
         },
         { eager: true } // fetch it on runtime using last state
       );
+
+      // Emit user authentication
+      events.emit('authenticated', false);
     </script>
 
     <div id="app">
