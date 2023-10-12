@@ -69,6 +69,7 @@
 
 .actions button::after {
   font-size: 60%;
+  content: attr(data-label);
 }
 
 .actions button:disabled {
@@ -91,6 +92,7 @@ code {
   font-size: 1rem;
   text-align: left;
   box-sizing: border-box;
+  overflow: scroll;
 }
 
 code::before {
