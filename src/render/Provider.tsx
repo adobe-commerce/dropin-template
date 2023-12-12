@@ -21,11 +21,15 @@ export const Provider: FunctionComponent<CartProviderProps> = ({
 
   //   Events
   useEffect(() => {
-    const localeEvent = events.on('locale', (locale: string) => {
-      setLang(locale as Lang);
-    }, { eager: true });
+    const localeEvent = events.on(
+      'locale',
+      (locale: string) => {
+        setLang(locale as Lang);
+      },
+      { eager: true }
+    );
     return () => {
-      localeEvent.off();
+      localeEvent?.off();
     };
   }, []);
 
