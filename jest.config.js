@@ -2,7 +2,12 @@ const baseConfig = require('@adobe/elsie/config/jest');
 
 module.exports = {
   ...baseConfig,
-  
+
+  setupFiles: [
+    ...baseConfig.setupFiles,
+    '<rootDir>/tests/__mocks__/browserMocks.ts',
+  ],
+
   coverageThreshold: {
     global: {
       branches: 100,
