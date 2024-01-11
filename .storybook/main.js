@@ -13,6 +13,7 @@ export const addons = [
 
 export const docs = {
   autodocs: true,
+  defaultName: 'Overview',
 };
 
 export const staticDirs = ['./public'];
