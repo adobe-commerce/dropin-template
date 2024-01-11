@@ -41,7 +41,7 @@ export const parameters = {
       order: [
         '*',
         ['Getting Started', 'API', 'Containers', 'Components', '*'],
-        'Base',
+        'SDK',
         [
           'Welcome',
           'Quick start',
