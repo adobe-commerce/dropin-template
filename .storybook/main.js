@@ -11,4 +11,9 @@ export const addons = [
   '../storybook-stories', // this project stories
 ];
 
+export const docs = {
+  autodocs: true,
+  defaultName: 'Overview',
+};
+
 export const staticDirs = ['./public'];
