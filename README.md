@@ -1,4 +1,4 @@
-# My Domain Package
+# My Drop-in
 
 ## Getting Started
 
