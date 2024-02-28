@@ -11,7 +11,7 @@ npm install
 ### Generate new config
 
 ```bash
-npx elsie generate config --name <Domain>
+npx elsie generate config --name <DropInName>
 ```
 
 ### Update Mesh Endpoint (for development only)
