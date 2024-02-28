@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "my-domain-package",
+    "name": "my-dropin",
     "version": "0.1.0",
     "license": "MIT",
     "engines": {
