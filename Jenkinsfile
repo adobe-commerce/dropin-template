@@ -79,7 +79,7 @@ pipeline {
 
                                         dir('dist') {
                                             def VERSION = params.RELEASE_TAG_NAME.replaceAll(/^v/, '')
-                                            def JSON_OBJECT="{\"name\": \"$PROJECT_NAME\", \"version\": \"$VERSION\", \"@dropins/elsie\": \"$ELSIE_VERSION\"}"
+                                            def JSON_OBJECT="{\"name\": \"$PROJECT_NAME\", \"version\": \"$VERSION\", \"@dropins/tools\": \"$ELSIE_VERSION\"}"
 
                                             // Create package.json
                                             sh "echo '$JSON_OBJECT' > package.json"

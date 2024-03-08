@@ -23,7 +23,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@dropins/elsie/": "https://unpkg.com/@dropins/elsie@latest/",
+          "@dropins/tools/": "https://unpkg.com/@dropins/tools@latest/",
           "my-pkg/": "http://localhost:3002/"
         }
       }
@@ -31,20 +31,20 @@
 
     <style>
       /* Base Design System Tokens */
-      /* .elsie-base-design { } */
+      /* .dropin-design { } */
     </style>
   </head>
 
   <body>
     <script type="module">
       // Event Bus
-      import { events } from '@dropins/elsie/event-bus.js';
+      import { events } from '@dropins/tools/event-bus.js';
 
       // GraphQL Client
-      import * as mesh from '@dropins/elsie/fetch-graphql.js';
+      import * as mesh from '@dropins/tools/fetch-graphql.js';
 
       // Initializer
-      import { initializers } from '@dropins/elsie/initializer.js';
+      import { initializers } from '@dropins/tools/initializer.js';
 
       // My Domain Package
       import * as pkg from 'my-pkg/api.js';
