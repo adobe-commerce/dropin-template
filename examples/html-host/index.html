@@ -49,8 +49,8 @@
       // My Domain Package
       import * as pkg from 'my-pkg/api.js';
 
-      import { render as provider } from 'my-pkg/render.js';
-      import Foo from 'my-pkg/containers/Foo.js';
+      // import { render as provider } from 'my-pkg/render.js';
+      // import <Container> from 'my-pkg/containers/<Container>.js';
 
       // Initialize GraphQl Client (Mesh)
       mesh.setEndpoint(
@@ -110,7 +110,7 @@
       events.emit('authenticated', false);
 
       // Render Containers
-      provider.render(Foo)(document.getElementById('my-pkg'));
+      // provider.render(<Container>)(document.getElementById('my-pkg'));
     </script>
 
     <div id="app">
