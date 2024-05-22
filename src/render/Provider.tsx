@@ -4,10 +4,11 @@ import { UIProvider } from '@adobe/elsie/components';
 import { Lang } from '@adobe/elsie/i18n';
 import { events } from '@adobe/event-bus';
 
-events.enableLogger(true);
+import en_US from '../i18n/en_US.json';
+
 // Langs
 const langDefinitions = {
-  default: require('../i18n/en_US.json'),
+  default: en_US,
 };
 
 interface CartProviderProps {

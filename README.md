@@ -1,4 +1,4 @@
-# My Drop-in
+# My Dropin
 
 ## Getting Started
 
