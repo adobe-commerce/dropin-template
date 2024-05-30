@@ -7,7 +7,7 @@ export const stories = [
   },
 ];
 
-export const framework = '@storybook/preact-vite';
+export const framework = '@storybook/preact-webpack5';
 
 export const addons = [
   '@storybook/addon-essentials',
