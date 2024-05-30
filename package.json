@@ -20,7 +20,7 @@
         "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
-        "@adobe/elsie": "0.23.0-alpha40",
+        "@adobe/elsie": "latest",
         "@adobe/event-bus": "latest",
         "@adobe/fetch-graphql": "latest",
         "@adobe/storefront-design": "latest",
