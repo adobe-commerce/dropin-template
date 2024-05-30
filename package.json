@@ -13,7 +13,7 @@
     "scripts": {
         "dev": "concurrently 'npm run storybook' 'npm run serve'",
         "storybook": "elsie storybook",
-        "serve": "concurrently 'elsie serve --mode=development' 'wait-on tcp:${PORT:=3002} && http-server ./examples/html-host -c-1 -p 3000 -d -o'",
+        "serve": "concurrently 'elsie serve' 'wait-on tcp:${PORT:=3002} && alive-server ./examples/html-host --port=3000 --watch=../../dist/reload'",
         "lint": "elsie lint --max-warnings=0",
         "test": "elsie test",
         "build": "elsie build",
@@ -24,11 +24,11 @@
         "@adobe/event-bus": "latest",
         "@adobe/fetch-graphql": "latest",
         "@adobe/storefront-design": "latest",
-        "preact": "^10.3.2"
+        "preact": "^10.19.6"
     },
     "devDependencies": {
+        "alive-server": "^1.3.0",
         "concurrently": "^8.0.1",
-        "http-server": "14.1.1",
         "jest": "^27.0.1",
         "wait-on": "^7.0.1"
     }

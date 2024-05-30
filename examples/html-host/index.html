@@ -23,7 +23,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@dropins/tools/": "https://unpkg.com/@dropins/tools@latest/",
+          "@dropins/tools/": "https://unpkg.com/@dropins/tools@0.23.0-alpha40/",
           "my-pkg/": "http://localhost:3002/"
         }
       }
@@ -70,9 +70,6 @@
       // Mount Initializers
       initializers.mount();
 
-      // Render Containers
-      // provider.render(<Container>)(document.getElementById('my-pkg'));
-
       // Render Store Data
       const $data = document.getElementById('data');
 
@@ -111,6 +108,9 @@
 
       // Emit user authentication
       events.emit('authenticated', false);
+
+      // Render Containers
+      // provider.render(<Container>)(document.getElementById('my-pkg'));
     </script>
 
     <div id="app">
