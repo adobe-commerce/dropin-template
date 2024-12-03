@@ -4,7 +4,7 @@
 
 // TODO: in Jenkins UI duplicate job dropin-template and update the Github project URL and credentials if needed.
 pipeline {
-    agent { node { label 'corgeesejenkinsnode' }}
+    agent { node { label 'corgeesejenkinsnode' } }
     tools { nodejs 'node-16.14' }
 
     parameters {
@@ -37,7 +37,7 @@ pipeline {
                                 ]
                             ]
                         ) {
-                            dir("${env.WORKSPACE}"){
+                            dir("${env.WORKSPACE}") {
                                 script {
                                     sh "curl -u ${ARTIFACTORY_USERNAME}:${ARTIFACTORY_TOKEN} \"${env.ARTIFACTORY_BASE_URL}/api/npm/auth\" >> .npmrc"
                                     sh "curl -u ${ARTIFACTORY_USERNAME}:${ARTIFACTORY_CORP_TOKEN} ${ARTIFACTORY_CORP_URL}/api/npm/npm-adobe-release-local/auth/exc >> .npmrc"
@@ -47,7 +47,7 @@ pipeline {
                     }
                 }
 
-                stage('Publish my-domain-package bundles to NPM') { 
+                stage('Publish my-domain-package bundles to NPM') {
                     steps {
                         withVaultSecrets(
                             'https://vault-amer.adobe.net',
@@ -57,29 +57,29 @@ pipeline {
                                     'NPM_TOKEN':'npm_token'
                                 ]
                             ]) {
-                                dir("${env.WORKSPACE}"){
+                                dir("${env.WORKSPACE}") {
                                     script {
+                                        // Set variables for package.json
+                                        env.PROJECT_NAME = readJSON(file: 'package.json').name
+                                        env.ELSIE_VERSION = readJSON(file: 'package.json').dependencies.'@adobe/elsie'
+
                                         // yarn creates directories under /apps. when running on jenkins slave, centos user needs permissions on /apps
                                         sh 'sudo mkdir -p /apps'
                                         sh 'sudo chmod -R o+rwx /apps'
                                         sh 'mkdir -p .yarncache'
-                                
+
                                         // Install dependencies
                                         sh 'yarn install --cache-folder .yarncache'
 
                                         // Build my-domain-packages dist bundles
                                         sh 'yarn build'
 
-                                        // Set variables for package.json
-                                        env.PROJECT_NAME = readJSON(file: 'package.json').name
-                                        env.ELSIE_VERSION = readJSON(file: 'package.json').dependencies.'@adobe/elsie'
-
                                         // Create dist folder
                                         sh 'mkdir -p .dist'
 
                                         dir('dist') {
                                             def VERSION = params.RELEASE_TAG_NAME.replaceAll(/^v/, '')
-                                            def JSON_OBJECT="{\"name\": \"$PROJECT_NAME\", \"version\": \"$VERSION\", \"@dropins/tools\": \"$ELSIE_VERSION\"}"
+                                            def JSON_OBJECT = "{\"name\": \"$PROJECT_NAME\", \"version\": \"$VERSION\", \"@dropins/tools\": \"$ELSIE_VERSION\"}"
 
                                             // Create package.json
                                             sh "echo '$JSON_OBJECT' > package.json"
@@ -90,20 +90,20 @@ pipeline {
                                         }
                                     }
                                 }
-                        }    
-                    }   
+                            }
+                    }
                 }
             }
             post {
                 success {
                     script {
-                        slackSend color: "good", message: "Version ${RELEASE_TAG_NAME} of ${env.PROJECT_NAME} dropin has been released."
+                        slackSend color: 'good', message: "Version ${RELEASE_TAG_NAME} of ${env.PROJECT_NAME} dropin has been released."
                     }
                 }
 
                 failure {
                     script {
-                        slackSend color: "bad", message: "Something went wrong, failed to release ${env.PROJECT_NAME} ${RELEASE_TAG_NAME}."
+                        slackSend color: 'bad', message: "Something went wrong, failed to release ${env.PROJECT_NAME} ${RELEASE_TAG_NAME}."
                     }
                 }
 
