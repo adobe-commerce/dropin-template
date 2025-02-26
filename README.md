@@ -1,4 +1,4 @@
-# My Dropin
+# Drop-in Template
 
 ## Getting Started
 

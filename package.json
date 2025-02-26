@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "my-dropin",
+    "name": "dropin-template",
     "version": "0.1.0",
     "license": "MIT",
     "engines": {
@@ -20,10 +20,10 @@
         "analyze": "ANALYZE=true elsie build"
     },
     "dependencies": {
-        "@adobe/elsie": "latest",
-        "@adobe/event-bus": "latest",
-        "@adobe/fetch-graphql": "latest",
-        "@adobe/storefront-design": "latest",
+        "@adobe-commerce/elsie": "latest",
+        "@adobe-commerce/event-bus": "latest",
+        "@adobe-commerce/fetch-graphql": "latest",
+        "@adobe-commerce/storefront-design": "latest",
         "preact": "^10.19.6"
     },
     "devDependencies": {
