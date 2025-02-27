@@ -1,0 +1,35 @@
+{
+    "private": true,
+    "name": "dropin-template",
+    "version": "0.1.0",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
+    "files": [
+        "*"
+    ],
+    "sideEffects": false,
+    "scripts": {
+        "dev": "concurrently 'npm run storybook' 'npm run serve'",
+        "storybook": "elsie storybook",
+        "serve": "concurrently 'elsie serve' 'wait-on tcp:${PORT:=3002} && alive-server ./examples/html-host --port=3000 --watch=../../dist/reload'",
+        "lint": "elsie lint --max-warnings=0",
+        "test": "elsie test",
+        "build": "elsie build",
+        "analyze": "ANALYZE=true elsie build"
+    },
+    "dependencies": {
+        "@adobe-commerce/elsie": "latest",
+        "@adobe-commerce/event-bus": "latest",
+        "@adobe-commerce/fetch-graphql": "latest",
+        "@adobe-commerce/storefront-design": "latest",
+        "preact": "^10.19.6"
+    },
+    "devDependencies": {
+        "alive-server": "^1.3.0",
+        "concurrently": "^8.0.1",
+        "jest": "^27.0.1",
+        "wait-on": "^7.0.1"
+    }
+}

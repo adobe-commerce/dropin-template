@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>HTML Example</title>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- 
+    JavaScript import maps are now supported cross-browser
+    See: https://caniuse.com/?search=importmap
+
+    This example uses the es-module-shims polyfill to enable support in browsers that do not yet support import maps.
+    -->
+    <script
+      async
+      src="https://ga.jspm.io/npm:es-module-shims@1.7.2/dist/es-module-shims.js"
+    ></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@dropins/tools/": "https://cdn.jsdelivr.net/npm/@dropins/tools/",
+          "my-pkg/": "http://localhost:3002/"
+        }
+      }
+    </script>
+
+    <style>
+      /* Base Design System Tokens */
+      /* .dropin-design { } */
+    </style>
+  </head>
+
+  <body>
+    <script type="module">
+      // Event Bus
+      import { events } from '@dropins/tools/event-bus.js';
+
+      // GraphQL Client
+      import * as mesh from '@dropins/tools/fetch-graphql.js';
+
+      // Initializer
+      import { initializers } from '@dropins/tools/initializer.js';
+
+      // My Domain Package
+      import * as pkg from 'my-pkg/api.js';
+
+      // import { render as provider } from 'my-pkg/render.js';
+      // import <Container> from 'my-pkg/containers/<Container>.js';
+
+      // Initialize GraphQl Client (Mesh)
+      // Mesh Endpoint
+      mesh.setEndpoint(process.env.ENDPOINT);
+
+      // Initialize GraphQl Client (PKG)
+      // pkg.setEndpoint(...);
+
+      // Enable events logger
+      events.enableLogger(true);
+
+      // Register Initializers
+      initializers.register(pkg.initialize);
+
+      // Mount Initializers
+      initializers.mount();
+
+      // Render Store Data
+      const $data = document.getElementById('data');
+
+      // Listen for user athentication
+      const $title = document.getElementById('title');
+
+      events.on(
+        'authenticated',
+        (authenticated) => {
+          $title.innerText = authenticated ? '🔓' : '🔒';
+
+          // Fetch store data when user logs in/out
+          mesh
+            .fetchGraphQl(
+              `
+                query STORE {
+                  storeConfig {
+                    store_name
+                    store_code
+                  }
+
+                  customer {
+                    firstname
+                    lastname
+                    email
+                  }
+                }
+              `
+            )
+            .then(({ data }) => {
+              $data.innerText = JSON.stringify(data, null, 2);
+            });
+        },
+        { eager: true } // fetch it on runtime using last state
+      );
+
+      // Emit user authentication
+      events.emit('authenticated', false);
+
+      // Render Containers
+      // provider.render(<Container>)(document.getElementById('my-pkg'));
+    </script>
+
+    <div id="app">
+      <h1 id="title">💻</h1>
+
+      <div class="cards">
+        <div class="card card--black">
+          <h2 class="heading">App Shell</h2>
+
+          <fieldset class="actions">
+            <legend>API Functions</legend>
+
+            <button id="action-1" disabled>Action</button>
+          </fieldset>
+
+          <code data-label="fetchGraphQl">
+            <pre id="data">⏳ Loading...</pre>
+          </code>
+        </div>
+
+        <div class="containers">
+          <h2 class="heading">Frontend Containers</h2>
+
+          <div id="my-pkg" class="container"></div>
+          <!-- <div id="my-pkg2" class="container"></div> -->
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="example.css" />
+  </body>
+</html>

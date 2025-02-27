@@ -1,0 +1,8 @@
+{
+  "templateVersion": "0.1",
+  "product": {
+    "name": "Drop-in Template",
+    "description": "Starter template for building Adobe Commerce DropIns (composable components)."
+  },
+  "productionCodeBranches": ["main"]
+}
