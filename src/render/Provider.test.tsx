@@ -1,11 +1,11 @@
 import { Provider } from './Provider';
-import { events } from '@adobe/event-bus';
-import { UIProvider } from '@adobe/elsie/components';
+import { events } from '@adobe-commerce/event-bus';
+import { UIProvider } from '@adobe-commerce/elsie/components';
 import { render } from '@testing-library/preact';
 
 import en_US from '../i18n/en_US.json';
 
-jest.mock('@adobe/elsie/components/UIProvider', () => ({
+jest.mock('@adobe-commerce/elsie/components/UIProvider', () => ({
   UIProvider: jest.fn(),
 }));
 

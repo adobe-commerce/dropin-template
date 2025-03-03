@@ -14,8 +14,8 @@ export const addons = [
   '@storybook/addon-a11y',
   '@storybook/addon-interactions',
   '@storybook/addon-coverage',
-  '@adobe/elsie/config/storybook/addon',
-  '@adobe/elsie/storybook-stories', // core stories
+  '@adobe-commerce/elsie/config/storybook/addon',
+  '@adobe-commerce/elsie/storybook-stories', // core stories
 ];
 
 export const staticDirs = ['./public'];

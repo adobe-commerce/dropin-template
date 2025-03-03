@@ -1,3 +1,3 @@
-const baseConfig = require('@adobe/elsie/config/prettier');
+const baseConfig = require('@adobe-commerce/elsie/config/prettier');
 
 module.exports = { ...baseConfig };

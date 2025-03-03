@@ -1,10 +1,10 @@
 {
-  "extends": "@adobe/elsie/config/tsconfig-preact.json",
+  "extends": "@adobe-commerce/elsie/config/tsconfig-preact.json",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@adobe/elsie/*": ["./node_modules/@adobe/elsie/src/*"]
+      "@adobe-commerce/elsie/*": ["./node_modules/@adobe-commerce/elsie/src/*"]
     }
   },
   "include": ["src"],

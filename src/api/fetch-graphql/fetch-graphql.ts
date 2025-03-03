@@ -1,4 +1,4 @@
-import { FetchGraphQL } from '@adobe/fetch-graphql';
+import { FetchGraphQL } from '@adobe-commerce/fetch-graphql';
 
 export const {
   setEndpoint,
