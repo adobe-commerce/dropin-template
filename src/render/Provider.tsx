@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
-import { UIProvider } from '@adobe/elsie/components';
-import { Lang } from '@adobe/elsie/i18n';
-import { events } from '@adobe/event-bus';
+import { UIProvider } from '@adobe-commerce/elsie/components';
+import { Lang } from '@adobe-commerce/elsie/i18n';
+import { events } from '@adobe-commerce/event-bus';
 
 import en_US from '../i18n/en_US.json';
 

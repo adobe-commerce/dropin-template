@@ -1,3 +1,3 @@
-const baseConfig = require('@adobe/elsie/config/eslint');
+const baseConfig = require('@adobe-commerce/elsie/config/eslint');
 
 module.exports = { ...baseConfig };

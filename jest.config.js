@@ -1,4 +1,4 @@
-const baseConfig = require('@adobe/elsie/config/jest');
+const baseConfig = require('@adobe-commerce/elsie/config/jest');
 
 module.exports = {
   ...baseConfig,
