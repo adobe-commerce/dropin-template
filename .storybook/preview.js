@@ -1,6 +1,6 @@
 import { DocsPage, DocsContainer } from '@storybook/addon-docs';
-import { initializers } from '@adobe/elsie/lib';
-import { events } from '@adobe/event-bus';
+import { initializers } from '@adobe-commerce/elsie/lib';
+import { events } from '@adobe-commerce/event-bus';
 import { Provider } from '../src/render/Provider';
 import { initialize as pkg, setEndpoint } from '../src/api';
 
