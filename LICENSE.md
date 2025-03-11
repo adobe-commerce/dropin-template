@@ -1,5 +1,5 @@
                                             
-                                            ADOBE SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT
+                                            ADOBE DROP-IN TEMPLATE LICENSE AGREEMENT
                                                Effective Date:  first date you use the Drop-in Template
   
   
@@ -26,7 +26,7 @@
     1.4	“Intellectual Property Rights” means copyright, moral rights, trademark, trade dress, patent, trade secret, unfair competition, and any other 
     intellectual and proprietary rights.
     
-    1.5	“Drop-in Template” or “Software Development Kit” means all items comprising the software development kit and all associated materials licensed to you by 
+    1.5	“Drop-in Template” means all items comprising this drop-in template and all associated materials licensed to you by 
     Adobe as part of the Drop-in Template, including all Drop-in Template system files, tools, programs and utilities, as well as any plug-ins or other application programming 
     interfaces, header or JAR files (“API”), sample images, sounds, or similar assets (“Content Files”), software code samples, runtimes and libraries, 
     including any portion(s) that is modified by you, or merged or incorporated with your Developer Products (“Sample Code”), and any related 
