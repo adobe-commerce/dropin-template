@@ -3,7 +3,7 @@
 
 > 🔰**Note:** Supported Node versions are: Maintenance (v20) and Active (v22).
 
-This repository provides a template for working with drop-ins in [Adobe Commerce](https://experienceleague.adobe.com/docs/commerce). Drop-ins allow you to extend and customize your storefront with reusable components and APIs. Follow the steps below to set up your development environment and start building your own drop-ins.
+This repository provides a template for creating custom drop-ins. Drop-ins allow you to extend and customize your storefront with reusable components and APIs. Follow the steps below to set up your development environment and start building your own drop-ins.
 
 Not sure what a dropin is? Get an overview of dropins [here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/introduction/).
 
@@ -16,7 +16,7 @@ Need to download/update your node version? You can use [nvm](https://github.com/
 1. [Getting Started](#getting-started)
    - [Install Dependencies](#1-install-dependencies)
    - [Generate New Config](#2-generate-new-config)
-   - [Update Mesh Endpoint](#3-update-mesh-endpoint-for-development-only)
+   - [Update Mesh Endpoint](#3-update-mesh/backend-endpoint-for-development-only)
    - [Generate New UI Component](#4-generate-new-ui-component)
    - [Generate New API Function](#5-generate-new-api-function)
    - [Generate New Frontend Container](#6-generate-new-frontend-container)
@@ -62,7 +62,7 @@ To generate a new UI component, use the following command. Replace ```<MyUICompo
 
 **Make sure to use Pascal casing for the component name.**
 ```bash
-npx elsie generate component --pathname <myUIComponent>
+npx elsie generate component --pathname <MyUIComponent>
 ```
 
 ### 5. Generate new API Function
