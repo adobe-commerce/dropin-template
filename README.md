@@ -65,17 +65,9 @@ To generate a new UI component, use the following command. Replace ```<MyUICompo
 npx elsie generate component --pathname <MyUIComponent>
 ```
 
-### 5. Generate new API Function
-If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function.
+### 5. Generate new Frontend Container
 
-**Make sure to use Camel casing for the API name.**
-```bash
-npx elsie generate api --pathname <myApiFunction>
-```
-
-### 6. Generate new Frontend Container
-
-Containers, on the other hand, handle business logic, state management, and data fetching using the components, but notably contain no CSS or styling logic..
+Containers, on the other hand, handle business logic, state management, API calls, and data fetching using the components, but notably contain no CSS or styling logic..
 To create a new frontend container, use this command. Replace ```<MyContainer>``` with the desired name of your frontend container. 
 
 **Make sure to use Pascal casing for the container name.**
@@ -83,6 +75,19 @@ To create a new frontend container, use this command. Replace ```<MyContainer>``
 ```bash
 npx elsie generate container --pathname <MyContainer>
 ```
+
+### 6. Generate new API Function
+If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function. 
+
+The API layer provides core functionalities like fetching, handling events, and GraphQL operations. This API is primarily consumed by a container.
+
+**Make sure to use Camel casing for the API name.**
+
+```bash
+npx elsie generate api --pathname <myApiFunction>
+```
+> **Location:**  
+> Generated files will be placed in `src/components/`, `src/containers/`, and `src/api/` respectively
 
 ### 7. Launch development environment
 Once the dependencies are installed and configurations are set up, start the development server with the following command:
