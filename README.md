@@ -103,7 +103,7 @@ This launches the sandbox application and automatically opens it in your browser
 These steps help ensure that your development process is smooth and your code is properly tested.
 
 ### I. Storybook
-The Storybook is a tool used for developing and testing UI components in isolation. Once a container/component is created using one of the commands above, a `.stories.tsx` file will also be created in the same directory as the component/container which can be editted to preview the component/container.
+Storybook is a tool used for developing and testing UI components in isolation. Once a container/component is created using one of the commands above, a `.stories.tsx` file will also be created in the same directory as the component/container which can be used to preview the component/container.
 
 Use ```yarn run storybook``` to spin up the Storybook environment at `http://localhost:6006/`.
 
