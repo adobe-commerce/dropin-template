@@ -16,10 +16,10 @@ Need to download/update your node version? You can use [nvm](https://github.com/
 1. [Getting Started](#getting-started)
    - [Install Dependencies](#1-install-dependencies)
    - [Generate New Config](#2-generate-new-config)
-   - [Update Mesh Endpoint](#3-update-mesh/backend-endpoint-for-development-only)
+   - [Update Mesh/Backend Endpoint](#3-update-meshbackend-endpoint-for-development-only)
    - [Generate New UI Component](#4-generate-new-ui-component)
-   - [Generate New API Function](#5-generate-new-api-function)
-   - [Generate New Frontend Container](#6-generate-new-frontend-container)
+   - [Generate New Frontend Container](#5-generate-new-frontend-container)
+   - [Generate New API Function](#6-generate-new-api-function)
    - [Launch Development Environment](#7-launch-development-environment)
 2. [Development and Testing](#development-and-testing)
    - [Storybook](#i-storybook)
@@ -95,32 +95,41 @@ Once the dependencies are installed and configurations are set up, start the dev
 ```bash
 npm run dev
 ```
-This launches the sandbox application and automatically opens it in your browser. You can now start developing and testing your drop-in.
+This launches and opens the sandbox application and Storybook environment in your browser.
 
 ---
 
 ## Development and Testing
-These steps help ensure that your development process is smooth and your code is properly tested.
+These development tools help you preview components during your development process and ensure that your code is properly tested.
 
 ### I. Storybook
-Storybook is a tool used for developing and testing UI components in isolation. Once a container/component is created using one of the commands above, a `.stories.tsx` file will also be created in the same directory as the component/container which can be used to preview the component/container.
+Storybook is a tool used for developing and testing UI components in isolation. Once a container/component is created using one of the commands above, a `.stories.tsx` file is also created in the same directory as the component/container to preview the component/container.
 
-Use ```yarn run storybook``` to spin up the Storybook environment at `http://localhost:6006/`.
+Use ```npm run storybook``` to spin up the Storybook environment at `http://localhost:6006/`.
+
+[Here](https://storybook.js.org/docs) is the official Storybook documentation.
 
 ### II. Sandbox
-The Sandbox is a broader concept for a safe, isolated environment where you can experiment with code, configurations, or features without impacting the actual production environment. As a result, containers can typically be previewed in the sandbox.
+The Sandbox is an html file with minimal application setup to deploy your dropin. It is useful for testing and integration between different peices of your project.
 
 To render your container in the sandbox, Update the `examples/html-host/index.html` file.
-Use ```yarn run serve``` to spin up the Sandbox environment at `http://127.0.0.1:3000`.
+Use ```npm run serve``` to spin up the Sandbox environment at `http://127.0.0.1:3000`.
 
-Need help figuring out how to render your containers in `examples/html-host/index.html`? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
+Need help figuring out how work with the Sandbox? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
 
 ### III. Run Unit Tests
-To ensure your code is working as expected, you should run the unit tests. This will help catch any issues early in the development process:
+The commands to generate a component, container or an API, also create a `.test.tsx` file in their respective directories. These files are useful for unit testing.
+
+To ensure your code is working as expected, you should run these unit tests to catch any issues early in the development process:
 
 ```bash
 npm run test
 ````
+
+This project is set up to use the jest testing framework. Here are some useful documentations:
+
+- [Jest Getting Started (official docs)](https://jestjs.io/docs/getting-started)
+- [Preact Testing Library Intro](https://testing-library.com/docs/preact-testing-library/intro)
 
 ### IV. Build Production Bundles
 Once you're ready to prepare your app for production, run the following command to build the production bundles:
