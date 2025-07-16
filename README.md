@@ -95,7 +95,7 @@ Once the dependencies are installed and configurations are set up, start the dev
 ```bash
 npm run dev
 ```
-This will launch your app and automatically open it in your browser. You can now start developing and testing your drop-in.
+This launches the sandbox application and automatically opens it in your browser. You can now start developing and testing your drop-in.
 
 ---
 
