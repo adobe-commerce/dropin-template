@@ -67,7 +67,7 @@ npx elsie generate component --pathname <MyUIComponent>
 
 ### 5. Generate new Frontend Container
 
-Containers, on the other hand, handle business logic, state management, API calls, and data fetching using the components, but notably contain no CSS or styling logic..
+Containers handle business logic, state management, API calls, and data fetching using the components. They do not contain CSS or styling logic.
 To create a new frontend container, use this command. Replace ```<MyContainer>``` with the desired name of your frontend container. 
 
 **Make sure to use Pascal casing for the container name.**
