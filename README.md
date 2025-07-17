@@ -1,13 +1,19 @@
 ![Drop-in_Template (1)](https://github.com/user-attachments/assets/b2d8a1b7-37fd-436c-bf2d-2a49b9127470)
 
 
-> 🔰**Note:** Supported Node versions are: Maintenance (v20) and Active (v22).
+## Prerequisites
+
+>- Complete steps 1-3 in the "How to use the Adobe Commerce drop-in template" section of [Creating drop-in components](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) before proceeding.
+>- Supported Node versions are: Maintenance (v20) and Active (v22).
+
+> Need to download/update your node version? You can use [nvm](https://github.com/nvm-sh/nvm).
+---
 
 This repository provides a template for creating custom drop-ins. Drop-ins allow you to extend and customize your storefront with reusable components and APIs. Follow the steps below to set up your development environment and start building your own drop-ins.
 
 Not sure what a dropin is? Get an overview of dropins [here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/introduction/).
 
-Need to download/update your node version? You can use [nvm](https://github.com/nvm-sh/nvm).
+
 
 ---
 
