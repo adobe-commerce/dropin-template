@@ -1,6 +1,8 @@
 {
   "extends": "@adobe-commerce/elsie/config/tsconfig-preact.json",
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
