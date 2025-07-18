@@ -37,17 +37,20 @@
 
   <body>
     <script type="module">
-      // Event Bus
-      import { events } from '@dropins/tools/event-bus.js';
+      
+      // Import API functions to use with action buttons
+      // Replace `my-pkg` with `@dropins/YourDropin`
+      import * as pkg from 'my-pkg/api.js';
 
-      // GraphQL Client
-      import * as mesh from '@dropins/tools/fetch-graphql.js';
+      // The event bus is a core communication tool for all dropins.
+      // They subscribe and publish to events to talk to each other without direct coupling.
+      import { events } from '@dropins/tools/event-bus.js';
 
       // Initializer
       import { initializers } from '@dropins/tools/initializer.js';
 
-      // My Domain Package
-      import * as pkg from 'my-pkg/api.js';
+      // GraphQL Client
+      import * as mesh from '@dropins/tools/fetch-graphql.js';
 
       // import { render as provider } from 'my-pkg/render.js';
       // import <Container> from 'my-pkg/containers/<Container>.js';
@@ -59,56 +62,15 @@
       // Initialize GraphQl Client (PKG)
       // pkg.setEndpoint(...);
 
-      // Enable events logger
-      events.enableLogger(true);
-
-      // Register Initializers
+      // Registers a new initializer. If the initializers have already been mounted, 
+      // it immediately binds the event listeners and initializes the API for the new initializer.
       initializers.register(pkg.initialize);
 
-      // Mount Initializers
+      // Mounts all registered initializers. 
+      // This involves binding the event listeners and initializing the APIs for each initializer, in that order.
       initializers.mount();
 
-      // Render Store Data
-      const $data = document.getElementById('data');
-
-      // Listen for user athentication
-      const $title = document.getElementById('title');
-
-      events.on(
-        'authenticated',
-        (authenticated) => {
-          $title.innerText = authenticated ? '🔓' : '🔒';
-
-          // Fetch store data when user logs in/out
-          mesh
-            .fetchGraphQl(
-              `
-                query STORE {
-                  storeConfig {
-                    store_name
-                    store_code
-                  }
-
-                  customer {
-                    firstname
-                    lastname
-                    email
-                  }
-                }
-              `
-            )
-            .then(({ data }) => {
-              $data.innerText = JSON.stringify(data, null, 2);
-            });
-        },
-        { eager: true } // fetch it on runtime using last state
-      );
-
-      // Emit user authentication
-      events.emit('authenticated', false);
-
-      // Render Containers
-      // provider.render(<Container>)(document.getElementById('my-pkg'));
+      // provider.render(<Container>)(document.getElementById('my-container'));
     </script>
 
     <div id="app">
@@ -132,8 +94,7 @@
         <div class="containers">
           <h2 class="heading">Frontend Containers</h2>
 
-          <div id="my-pkg" class="container"></div>
-          <!-- <div id="my-pkg2" class="container"></div> -->
+          <div id="my-container" class="container"></div>
         </div>
       </div>
     </div>
