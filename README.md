@@ -110,17 +110,6 @@ To generate a new UI component, use the following command. Replace ```<MyUICompo
 npx elsie generate component --pathname <MyUIComponent>
 ```
 
-### 6. Generate new Frontend Container
-
-Containers handle business logic, state management, API calls, and data fetching using the components. They do not contain CSS or styling logic.
-To create a new frontend container, use this command. Replace ```<MyContainer>``` with the desired name of your frontend container. 
-
-**Make sure to use Pascal casing for the container name.**
-
-```bash
-npx elsie generate container --pathname <MyContainer>
-```
-
 Let’s take a quick look at the files that are generated for you:
 
 ```console
@@ -138,6 +127,16 @@ These files were not only generated with the appropriate names, but they are com
 
 And if you run `npm run dev` again, you'll see your new component in the Storybook UI, configured with an example and best practices to help you get started with Storybook.
 
+### 6. Generate new Frontend Container
+
+Containers handle business logic, state management, API calls, and data fetching using the components. They do not contain CSS or styling logic.
+To create a new frontend container, use this command. Replace ```<MyContainer>``` with the desired name of your frontend container. 
+
+**Make sure to use Pascal casing for the container name.**
+
+```bash
+npx elsie generate container --pathname <MyContainer>
+```
 
 ### 7. Generate new API Function
 If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function. 
