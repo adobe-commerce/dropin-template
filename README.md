@@ -28,6 +28,7 @@ Not sure what a dropin is? Get an overview of dropins [here](https://experiencel
    - [Generate New Frontend Container](#6-generate-new-frontend-container)
    - [Generate New API Function](#7-generate-new-api-function)
    
+
 2. [Development and Testing](#development-and-testing)
    - [Storybook](#i-storybook)
    - [Sandbox](#ii-sandbox)
@@ -50,6 +51,7 @@ npm install
 ```
 
 ### 2. Generate New Config
+
 Before you can start developing, you need to generate the .elsie.js config file. The Elsie CLI uses this file to generate new components, containers, and API functions to specified directories within your projects.  
 To create a new configuration file, run the following command. Replace ```<DropInName>``` with the name of your new drop-in.
 
@@ -82,6 +84,7 @@ module.exports = {
 ```
 
 ### 3. Update Mesh/Backend Endpoint (for development only)
+
 For development purposes, you will need to update the `.env` file with the correct mesh/backend endpoint. This file is used to store environment-specific configurations.
 
 ```env
@@ -91,8 +94,9 @@ ENDPOINT="your-endpoint"
 ### 4. Launch development environment
 Let’s take it for a spin! Start the development server with the following command:
 
+**Make sure to use Pascal casing for the component name.**
 ```bash
-npm run dev
+npx elsie generate component --pathname <MyUIComponent>
 ```
 Congrats! You just launched your first composable frontend! Actually, no. What you're seeing is our frontend development environment. It's a preconfigured HTML page (`examples > html-host > index.html`) that loads your frontend components for testing during development:
 
@@ -134,9 +138,12 @@ To create a new frontend container, use this command. Replace ```<MyContainer>``
 
 **Make sure to use Pascal casing for the container name.**
 
+
 ```bash
 npx elsie generate container --pathname <MyContainer>
 ```
+> **Location:**  
+> Generated files will be placed in `src/components/`, `src/containers/`, and `src/api/` respectively
 
 ### 7. Generate new API Function
 If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function. 
