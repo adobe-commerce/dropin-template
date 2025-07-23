@@ -94,9 +94,8 @@ ENDPOINT="your-endpoint"
 ### 4. Launch development environment
 Let’s take it for a spin! Start the development server with the following command:
 
-**Make sure to use Pascal casing for the component name.**
 ```bash
-npx elsie generate component --pathname <MyUIComponent>
+npm run dev
 ```
 Congrats! You just launched your first composable frontend! Actually, no. What you're seeing is our frontend development environment. It's a preconfigured HTML page (`examples > html-host > index.html`) that loads your frontend components for testing during development:
 
@@ -138,7 +137,6 @@ To create a new frontend container, use this command. Replace ```<MyContainer>``
 
 **Make sure to use Pascal casing for the container name.**
 
-
 ```bash
 npx elsie generate container --pathname <MyContainer>
 ```
@@ -157,7 +155,6 @@ npx elsie generate api --pathname <myApiFunction>
 ```
 > **Location:**  
 > Generated files will be placed in `src/components/`, `src/containers/`, and `src/api/` respectively
-
 
 ---
 
