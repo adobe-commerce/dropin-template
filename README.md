@@ -140,8 +140,6 @@ To create a new frontend container, use this command. Replace ```<MyContainer>``
 ```bash
 npx elsie generate container --pathname <MyContainer>
 ```
-> **Location:**  
-> Generated files will be placed in `src/components/`, `src/containers/`, and `src/api/` respectively
 
 ### 7. Generate new API Function
 If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function. 
