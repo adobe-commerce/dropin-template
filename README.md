@@ -85,7 +85,7 @@ module.exports = {
 
 ### 3. Update Mesh/Backend Endpoint (for development only)
 
-For development purposes, you will need to update the `.env` file with the correct mesh/backend endpoint. This file is used to store environment-specific configurations.
+For development purposes, you will need to rename your `.env.sample` file to `.env` and update the new `.env` file with the correct mesh/backend endpoint. This file is used to store environment-specific configurations.
 
 ```env
 ENDPOINT="your-endpoint"
