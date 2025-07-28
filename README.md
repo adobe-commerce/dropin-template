@@ -1,4 +1,4 @@
-![Drop-in_Template (1)](https://github.com/user-attachments/assets/b2d8a1b7-37fd-436c-bf2d-2a49b9127470)
+![Drop-in_Template (1)](https://github.com/user-attachments/assets/dfb8c575-0a1e-4f2a-9380-f915a8ec83f5)
 
 
 ## Prerequisites
