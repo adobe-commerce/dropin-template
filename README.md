@@ -1,4 +1,4 @@
-![Drop-in_Template (1)](https://github.com/user-attachments/assets/b2d8a1b7-37fd-436c-bf2d-2a49b9127470)
+![Drop-in_Template (1)](https://github.com/user-attachments/assets/dfb8c575-0a1e-4f2a-9380-f915a8ec83f5)
 
 
 ## Prerequisites
@@ -23,10 +23,12 @@ Not sure what a dropin is? Get an overview of dropins [here](https://experiencel
    - [Install Dependencies](#1-install-dependencies)
    - [Generate New Config](#2-generate-new-config)
    - [Update Mesh/Backend Endpoint](#3-update-meshbackend-endpoint-for-development-only)
-   - [Generate New UI Component](#4-generate-new-ui-component)
-   - [Generate New Frontend Container](#5-generate-new-frontend-container)
-   - [Generate New API Function](#6-generate-new-api-function)
-   - [Launch Development Environment](#7-launch-development-environment)
+   - [Launch Development Environment](#4-launch-development-environment)
+   - [Generate New UI Component](#5-generate-new-ui-component)
+   - [Generate New Frontend Container](#6-generate-new-frontend-container)
+   - [Generate New API Function](#7-generate-new-api-function)
+   
+
 2. [Development and Testing](#development-and-testing)
    - [Storybook](#i-storybook)
    - [Sandbox](#ii-sandbox)
@@ -49,6 +51,8 @@ npm install
 ```
 
 ### 2. Generate New Config
+
+Before you can start developing, you need to generate the .elsie.js config file. The Elsie CLI uses this file to generate new components, containers, and API functions to specified directories within your projects.  
 To create a new configuration file, run the following command. Replace ```<DropInName>``` with the name of your new drop-in.
 
 ```bash
@@ -56,14 +60,51 @@ npx elsie generate config --name <DropInName>
 ```
 After generating the .elsie.js config, open it and take a look. Below is an annotated version describing the main properties:
 
-### 3. Update Mesh/Backend Endpoint (for development only)
-For development purposes, you will need to update the .env.local file with the correct mesh/backend endpoint. This file is used to store environment-specific configurations.
-
-```bash
-.env.local
+```js
+module.exports = {
+  name: 'Login', // The name of your frontend. This name can be changed at any time.
+  api: {
+    root: './src/api', // Directory where the CLI will add all your generated API functions.
+    importAliasRoot: '@/login/api',
+  },
+  components: [
+    {
+      id: 'Components',
+      root: './src/components', // Directory where the CLI will add all your generated components.
+      importAliasRoot: '@/login/components',
+      cssPrefix: 'elsie',
+      default: true,
+    },
+  ],
+  containers: {
+    root: './src/containers', // Directory where the CLI will add all your generated containers.
+    importAliasRoot: '@/login/containers',
+  },
+};
 ```
 
-### 4. Generate new UI Component
+### 3. Update Mesh/Backend Endpoint (for development only)
+
+For development purposes, you will need to rename your `.env.sample` file to `.env` and update the new `.env` file with the correct mesh/backend endpoint. This file is used to store environment-specific configurations.
+
+```env
+ENDPOINT="your-endpoint"
+```
+
+### 4. Launch development environment
+Let’s take it for a spin! Start the development server with the following command:
+
+```bash
+npm run dev
+```
+Congrats! You just launched your first composable frontend! Actually, no. What you're seeing is our frontend development environment. It's a preconfigured HTML page (`examples > html-host > index.html`) that loads your frontend components for testing during development:
+
+  <img src="https://github.com/user-attachments/assets/e38a7856-625e-4eae-a1b7-0863516231a8" 
+       alt="Frontend development environment" />
+
+Now we're ready to start building a composable frontend. Stop the server with `ctrl + c` and let's get started.
+
+### 5. Generate new UI Component
 UI components in this codebase are primarily responsible for rendering the UI, handling presentation, and managing styling.
 To generate a new UI component, use the following command. Replace ```<MyUIComponent>``` with the name of your component. 
 
@@ -73,7 +114,24 @@ npx elsie generate component --pathname <MyUIComponent>
 ```
 Congrats! You just launched your first composable frontend! Actually, no. What you're seeing is our frontend development environment. It's a preconfigured HTML page (`examples > html-host > index.html`) that loads your frontend components for testing during development:
 
-### 5. Generate new Frontend Container
+Let’s take a quick look at the files that are generated for you:
+
+```console
+~/composable-login [main] » npx elsie generate component --pathname LoginForm
+🆕 src/components/LoginForm/LoginForm.css created
+🆕 src/components/LoginForm/LoginForm.stories.tsx created
+🆕 src/components/LoginForm/LoginForm.test.tsx created
+🆕 src/components/LoginForm/LoginForm.tsx created
+🆕 src/components/LoginForm/index.ts created
+🆕 src/components/index.ts created
+~/composable-login [main] »
+```
+
+These files were not only generated with the appropriate names, but they are completely preconfigured to work together as a unit. For example, the `LoginForm` component was automatically imported into `src/components/index.ts` to let you start referencing the component throughout your project.
+
+And if you run `npm run dev` again, you'll see your new component in the Storybook UI, configured with an example and best practices to help you get started with Storybook.
+
+### 6. Generate new Frontend Container
 
 Containers handle business logic, state management, API calls, and data fetching using the components. They do not contain CSS or styling logic.
 To create a new frontend container, use this command. Replace ```<MyContainer>``` with the desired name of your frontend container. 
@@ -84,7 +142,7 @@ To create a new frontend container, use this command. Replace ```<MyContainer>``
 npx elsie generate container --pathname <MyContainer>
 ```
 
-### 6. Generate new API Function
+### 7. Generate new API Function
 If you need to add a new API function, run the following command. Replace ```<myApiFunction>``` with the desired name for your API function. 
 
 The API layer provides core functionalities like fetching, handling events, and GraphQL operations. This API is primarily consumed by a container.
@@ -96,14 +154,6 @@ npx elsie generate api --pathname <myApiFunction>
 ```
 > **Location:**  
 > Generated files will be placed in `src/components/`, `src/containers/`, and `src/api/` respectively
-
-### 7. Launch development environment
-Once the dependencies are installed and configurations are set up, start the development server with the following command:
-
-```bash
-npm run dev
-```
-This launches and opens the sandbox application and Storybook environment in your browser.
 
 ---
 
@@ -123,7 +173,7 @@ The Sandbox is an html file with minimal application setup to deploy your dropin
 To render your container in the sandbox, Update the `examples/html-host/index.html` file.
 Use ```npm run serve``` to spin up the Sandbox environment at `http://127.0.0.1:3000`.
 
-Need help figuring out how work with the Sandbox? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
+Need help figuring out how to work with the Sandbox? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
 
 ### III. Run Unit Tests
 The commands to generate a component, container or an API, also create a `.test.tsx` file in their respective directories. These files are useful for unit testing.
