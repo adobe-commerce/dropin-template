@@ -172,7 +172,7 @@ The Sandbox is an html file with minimal application setup to deploy your dropin
 To render your container in the sandbox, Update the `examples/html-host/index.html` file.
 Use ```npm run serve``` to spin up the Sandbox environment at `http://127.0.0.1:3000`.
 
-Need help figuring out how work with the Sandbox? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
+Need help figuring out how to work with the Sandbox? [Here](https://experienceleague.adobe.com/developer/commerce/storefront/dropins/all/creating/) is a detailed explanation.
 
 ### III. Run Unit Tests
 The commands to generate a component, container or an API, also create a `.test.tsx` file in their respective directories. These files are useful for unit testing.
