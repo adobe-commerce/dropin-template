@@ -1,0 +1,67 @@
+name: 'Validate GraphQL Operations'
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  validate-graphql:
+    runs-on: ubuntu-latest
+
+    env:
+      DEFAULT_ENDPOINTS: >-
+        https://mcstaging.aemshop.net/graphql,
+        https://na1-sandbox.api.commerce.adobe.com/LwndYQs37CvkUQk9WEmNkz/graphql
+      SOURCE_PATHS: ./src
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Extract GraphQL endpoints from PR description
+        id: endpoints
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const matches = [...body.matchAll(/https?:\/\/\S+\/graphql/gi)];
+            const urls = matches.map(m => m[0]);
+            if (urls.length > 0) {
+              core.notice(`Found endpoints in PR: ${urls.join(', ')}`);
+              core.setOutput('endpoints', urls.join(','));
+            } else {
+              core.warning('No endpoints found in PR – will use default or env.');
+              core.setOutput('endpoints', '');
+            }
+      - name: Determine final endpoints list
+        id: final-endpoints
+        run: |
+          ENDPOINTS_INPUT="${{ steps.endpoints.outputs.endpoints }}"
+          if [ -n "$ENDPOINTS_INPUT" ]; then
+            echo "Using endpoints from PR description."
+            echo "endpoints=$ENDPOINTS_INPUT" >> "$GITHUB_OUTPUT"
+          elif [ -n "$GRAPHQL_ENDPOINTS" ]; then
+            echo "Using endpoints from GRAPHQL_ENDPOINTS env."
+            echo "endpoints=$GRAPHQL_ENDPOINTS" >> "$GITHUB_OUTPUT"
+          else
+            echo "Using default endpoints."
+            echo "endpoints=${DEFAULT_ENDPOINTS}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run GraphQL validation
+        run: |
+          IFS=',' read -ra ENDPOINT_ARRAY <<< "${{ steps.final-endpoints.outputs.endpoints }}"
+          ENDPOINT_FLAGS=""
+          for url in "${ENDPOINT_ARRAY[@]}"; do
+            CLEANED_URL=$(echo "$url" | xargs)
+            ENDPOINT_FLAGS="$ENDPOINT_FLAGS -e=$CLEANED_URL"
+          done
+          echo "Running: npx elsie gql validate -s=${{ env.SOURCE_PATHS }} $ENDPOINT_FLAGS"
+          npx elsie gql validate -s=${{ env.SOURCE_PATHS }} $ENDPOINT_FLAGS
