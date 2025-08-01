@@ -1,35 +1,36 @@
 {
-    "private": true,
-    "name": "dropin-template",
-    "version": "0.1.0",
-    "license": "MIT",
-    "engines": {
-        "node": "^20.0.0 || ^22.0.0"
-    },
-    "files": [
-        "*"
-    ],
-    "sideEffects": false,
-    "scripts": {
-        "dev": "concurrently 'npm run storybook' 'npm run serve'",
-        "storybook": "elsie storybook",
-        "serve": "concurrently 'elsie serve' 'wait-on tcp:${PORT:=3002} && alive-server ./examples/html-host --port=3000 --watch=../../dist/reload'",
-        "lint": "elsie lint --max-warnings=0",
-        "test": "elsie test",
-        "build": "elsie build",
-        "analyze": "ANALYZE=true elsie build"
-    },
-    "dependencies": {
-        "@adobe-commerce/elsie": "1.4.0-beta3",
-        "@adobe-commerce/event-bus": "^1.0.0",
-        "@adobe-commerce/fetch-graphql": "^1.1.0",
-        "@adobe-commerce/storefront-design": "^1.0.0",
-        "preact": "~10.22.1"
-    },
-    "devDependencies": {
-        "alive-server": "^1.3.0",
-        "concurrently": "^8.0.1",
-        "jest": "^27.0.1",
-        "wait-on": "^7.0.1"
-    }
+  "private": true,
+  "name": "dropin-template",
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0"
+  },
+  "files": [
+    "*"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "concurrently 'npm run storybook' 'npm run serve'",
+    "storybook": "elsie storybook",
+    "serve": "concurrently 'elsie serve' 'wait-on tcp:${PORT:=3002} && alive-server ./examples/html-host --port=3000 --watch=../../dist/reload'",
+    "lint": "elsie lint --max-warnings=0",
+    "test": "elsie test",
+    "build": "elsie build",
+    "analyze": "ANALYZE=true elsie build"
+  },
+  "dependencies": {
+    "@adobe-commerce/elsie": "^1.4.0-beta3",
+    "@adobe-commerce/event-bus": "~1.0.0",
+    "@adobe-commerce/fetch-graphql": "~1.0.1",
+    "@adobe-commerce/storefront-design": "~1.0.0",
+    "@dropins/build-tools": "~1.0.1",
+    "preact": "~10.22.1"
+  },
+  "devDependencies": {
+    "alive-server": "^1.3.0",
+    "concurrently": "^9.2.0",
+    "jest": "^30.0.3",
+    "wait-on": "^8.0.3"
+  }
 }
