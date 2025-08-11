@@ -112,7 +112,6 @@ To generate a new UI component, use the following command. Replace ```<MyUICompo
 ```bash
 npx elsie generate component --pathname <MyUIComponent>
 ```
-Congrats! You just launched your first composable frontend! Actually, no. What you're seeing is our frontend development environment. It's a preconfigured HTML page (`examples > html-host > index.html`) that loads your frontend components for testing during development:
 
 Let’s take a quick look at the files that are generated for you:
 
