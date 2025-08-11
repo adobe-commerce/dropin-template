@@ -97,7 +97,7 @@ Let’s take it for a spin! Start the development server with the following comm
 ```bash
 npm run dev
 ```
-Congrats! You just launched your frontend development environment. It's a preconfigured HTML page (examples > html-host > index.html) that loads your frontend components for testing during development:
+Congrats! You just launched your frontend development environment. It's a preconfigured HTML page `(examples > html-host > index.html)` that loads your frontend components for testing during development:
 
   <img src="https://github.com/user-attachments/assets/e38a7856-625e-4eae-a1b7-0863516231a8" 
        alt="Frontend development environment" />
