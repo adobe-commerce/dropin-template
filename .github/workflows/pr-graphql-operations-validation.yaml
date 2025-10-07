@@ -26,21 +26,29 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Extract GraphQL endpoints from PR description
-        id: endpoints
+      - name: Fetch latest PR description
+        id: pr-body
         uses: actions/github-script@v7
         with:
           script: |
-            const body = context.payload.pull_request.body || '';
-            const matches = [...body.matchAll(/https?:\/\/\S+\/graphql/gi)];
-            const urls = matches.map(m => m[0]);
-            if (urls.length > 0) {
-              core.notice(`Found endpoints in PR: ${urls.join(', ')}`);
-              core.setOutput('endpoints', urls.join(','));
-            } else {
-              core.warning('No endpoints found in PR – will use default or env.');
-              core.setOutput('endpoints', '');
-            }
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            core.setOutput('body', pr.data.body || '');
+      - name: Extract GraphQL endpoints from PR description
+        id: endpoints
+        run: |
+          BODY="${{ steps.pr-body.outputs.body }}"
+          ENDPOINTS=$(echo "$BODY" | grep -iEo 'GraphQL Endpoint:\s*(https?://[^ ]+/graphql)' | sed -E 's/GraphQL Endpoint:\s*//' | paste -sd, -)
+          if [ -n "$ENDPOINTS" ]; then
+            echo "Found endpoints in PR: $ENDPOINTS"
+            echo "endpoints=$ENDPOINTS" >> "$GITHUB_OUTPUT"
+          else
+            echo "No endpoints found in PR – will use default or env."
+            echo "endpoints=" >> "$GITHUB_OUTPUT"
+          fi
       - name: Determine final endpoints list
         id: final-endpoints
         run: |
