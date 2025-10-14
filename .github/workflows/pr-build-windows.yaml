@@ -1,0 +1,22 @@
+name: 'Run Build Windows'
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+jobs:
+ run-build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Generate config
+        run: npx elsie generate config --name TestDropin
+      - name: Run build
+        run: npm run build
