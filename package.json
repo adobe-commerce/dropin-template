@@ -20,7 +20,7 @@
     "analyze": "ANALYZE=true elsie build"
   },
   "dependencies": {
-    "@adobe-commerce/elsie": "~1.5.0",
+    "@adobe-commerce/elsie": "~1.5.1",
     "@adobe-commerce/event-bus": "~1.0.0",
     "@adobe-commerce/fetch-graphql": "~1.2.0",
     "@adobe-commerce/storefront-design": "~1.0.0",
