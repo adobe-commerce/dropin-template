@@ -1,0 +1,11 @@
+name: Check Changeset
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened, synchronize]
+
+jobs:
+  check-changeset:
+    uses: adobe-commerce/storefront-workflows/.github/workflows/changesets-check.yml@v5
+    with:
+      skip: ${{ github.event.pull_request.draft == false || startsWith(github.head_ref, 'ci') || startsWith(github.head_ref, 'docs') }}
