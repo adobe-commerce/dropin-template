@@ -6,7 +6,8 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@adobe-commerce/elsie/*": ["./node_modules/@adobe-commerce/elsie/src/*"]
+      "@adobe-commerce/elsie/*": ["./node_modules/@adobe-commerce/elsie/src/*"],
+      "@/dropin-name/*": ["./src/*"]
     }
   },
   "include": ["src"],
