@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "dropin-template",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "engines": {
     "node": "^20.0.0 || ^22.0.0"
