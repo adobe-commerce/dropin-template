@@ -1,0 +1,13 @@
+name: 'PR GraphQL Validation'
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  pr-graphql-validation:
+    uses: adobe-commerce/storefront-workflows/.github/workflows/graphql-validation.yml@v5
+    with:
+      default-endpoints: >-
+        https://mcstaging.aemshop.net/graphql,
+        https://na1-sandbox.api.commerce.adobe.com/LwndYQs37CvkUQk9WEmNkz/graphql
