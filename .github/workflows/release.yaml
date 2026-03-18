@@ -9,9 +9,11 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,24 +38,30 @@ jobs:
         id: check
         run: |
           if git diff --quiet; then
-            echo "No version changes detected"
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit
+      - name: Create or update release PR
         if: steps.check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          BRANCH="changeset-release/main"
+          git checkout -b "$BRANCH"
           git add -A
           git commit -m "chore: bump version"
+          git push origin "$BRANCH" --force
+          gh pr create \
+            --title "chore: bump version" \
+            --body "Version bump from pending changesets." \
+            --base main \
+            --head "$BRANCH" \
+          || gh pr edit "$BRANCH" --title "chore: bump version"
 
-      - name: Run changeset tag
-        if: steps.check.outputs.has_changes == 'true'
-        run: npx changeset tag
-
-      - name: Push commit and tags
-        if: steps.check.outputs.has_changes == 'true'
+      - name: Tag release
+        if: steps.check.outputs.has_changes == 'false'
         run: |
-          git push origin HEAD
+          npx changeset tag
           git push --tags
