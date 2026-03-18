@@ -11,6 +11,8 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,8 +25,33 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Bump version and push tags
-        uses: adobe-commerce/storefront-workflows/.github/actions/changeset-tag@v5
-        with:
-          commit-message: 'chore: bump version'
-          push-tags: true
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run version command
+        run: npx changeset version
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet; then
+            echo "No version changes detected"
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          git add -A
+          git commit -m "chore: bump version"
+          git push origin HEAD
+
+      - name: Run changeset tag
+        run: npx changeset tag
+
+      - name: Push tags
+        run: git push --tags

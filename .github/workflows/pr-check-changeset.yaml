@@ -2,10 +2,26 @@ name: Check Changeset
 
 on:
   pull_request:
-    types: [opened, ready_for_review, reopened, synchronize]
+    types: [opened, ready_for_review, reopened, synchronize, labeled, unlabeled]
 
 jobs:
   check-changeset:
-    uses: adobe-commerce/storefront-workflows/.github/workflows/changesets-check.yml@v5
-    with:
-      skip: ${{ github.event.pull_request.draft == false || startsWith(github.head_ref, 'ci') || startsWith(github.head_ref, 'docs') }}
+    name: Check Changeset
+    runs-on: ubuntu-latest
+    if: |
+      !github.event.pull_request.draft &&
+      !contains(github.event.pull_request.labels.*.name, 'skip-changeset')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check for changeset
+        run: npx changeset status --since=origin/main
