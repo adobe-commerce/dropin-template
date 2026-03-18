@@ -34,7 +34,8 @@ jobs:
       - name: Check for changesets
         id: check
         run: |
-          if npx changeset status 2>/dev/null; then
+          count=$(find .changeset -name "*.md" ! -name "README.md" | wc -l)
+          if [ "$count" -gt 0 ]; then
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
@@ -63,10 +64,12 @@ jobs:
             --body "Version bump from pending changesets." \
             --base main \
             --head "$BRANCH" \
-          || gh pr edit "$BRANCH" --title "chore: bump version"
+            --label "skip-changeset" \
+          || gh pr edit "$BRANCH" --title "chore: bump version" --add-label "skip-changeset"
 
       - name: Tag release
         if: steps.check.outputs.has_changes == 'false'
         run: |
-          npx changeset tag
+          VERSION=$(node -p "require('./package.json').version")
+          git tag "v$VERSION"
           git push --tags
