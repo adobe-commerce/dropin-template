@@ -43,15 +43,18 @@ jobs:
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit and push
+      - name: Commit
         if: steps.check.outputs.has_changes == 'true'
         run: |
           git add -A
           git commit -m "chore: bump version"
-          git push origin HEAD
 
       - name: Run changeset tag
+        if: steps.check.outputs.has_changes == 'true'
         run: npx changeset tag
 
-      - name: Push tags
-        run: git push --tags
+      - name: Push commit and tags
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          git push origin HEAD
+          git push --tags
