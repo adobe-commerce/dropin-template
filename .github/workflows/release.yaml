@@ -71,5 +71,9 @@ jobs:
         if: steps.check.outputs.has_changes == 'false'
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          git tag "v$VERSION"
-          git push --tags
+          if git tag | grep -q "^v$VERSION$"; then
+            echo "Tag v$VERSION already exists, skipping."
+          else
+            git tag "v$VERSION"
+            git push --tags
+          fi
