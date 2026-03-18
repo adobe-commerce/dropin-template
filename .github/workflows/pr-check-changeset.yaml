@@ -6,7 +6,6 @@ on:
 
 jobs:
   check-changeset:
-    name: Check Changeset
     runs-on: ubuntu-latest
     if: |
       !github.event.pull_request.draft &&
