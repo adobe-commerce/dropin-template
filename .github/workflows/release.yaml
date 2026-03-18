@@ -74,6 +74,7 @@ jobs:
           if git tag | grep -q "^v$VERSION$"; then
             echo "Tag v$VERSION already exists, skipping."
           else
-            git tag "v$VERSION"
+            NOTES=$(awk "/^## $VERSION/{found=1; next} found && /^## /{exit} found{print}" CHANGELOG.md)
+            git tag -a "v$VERSION" -m "$NOTES"
             git push --tags
           fi
