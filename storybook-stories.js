@@ -1,12 +1,10 @@
-const path = require('path');
+import config from './.elsierc.json' with { type: 'json' };
 
-const { name } = require('./.elsie');
-
-module.exports = {
+export default {
   stories: [
     {
-      directory: path.resolve(__dirname, './src'),
-      titlePrefix: name,
+      directory: './src',
+      titlePrefix: config.name,
       files: '**/*.(mdx|stories.@(js|jsx|ts|tsx))',
     },
   ],

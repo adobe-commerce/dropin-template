@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@dropins/tools/": "https://cdn.jsdelivr.net/npm/@dropins/tools/",
+          "@dropins/tools/": "https://cdn.jsdelivr.net/npm/@dropins/tools@3.0.0/",
           "my-pkg/": "http://localhost:3002/"
         }
       }
@@ -37,7 +37,6 @@
 
   <body>
     <script type="module">
-      
       // Import API functions to use with action buttons
       // Replace `my-pkg` with `@dropins/YourDropin`
       import * as pkg from 'my-pkg/api.js';
@@ -62,11 +61,11 @@
       // Initialize GraphQl Client (PKG)
       // pkg.setEndpoint(...);
 
-      // Registers a new initializer. If the initializers have already been mounted, 
+      // Registers a new initializer. If the initializers have already been mounted,
       // it immediately binds the event listeners and initializes the API for the new initializer.
       initializers.register(pkg.initialize);
 
-      // Mounts all registered initializers. 
+      // Mounts all registered initializers.
       // This involves binding the event listeners and initializing the APIs for each initializer, in that order.
       initializers.mount();
 

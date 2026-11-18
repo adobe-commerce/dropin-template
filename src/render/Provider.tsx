@@ -17,9 +17,7 @@ interface ProviderProps {
   children?: any;
 }
 
-export const Provider: FunctionComponent<ProviderProps> = ({
-  children,
-}) => {
+export const Provider: FunctionComponent<ProviderProps> = ({ children }) => {
   const [lang, setLang] = useState<Lang>('en_US');
 
   //   Events
@@ -29,7 +27,7 @@ export const Provider: FunctionComponent<ProviderProps> = ({
       (locale: string) => {
         setLang(locale as Lang);
       },
-      { eager: true }
+      { eager: true },
     );
     return () => {
       localeEvent?.off();

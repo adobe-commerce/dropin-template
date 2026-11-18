@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "./tsconfig.json",
+    "@adobe-commerce/elsie/configs/tsconfig/build.json"
+  ],
+  "compilerOptions": {
+    "types": []
+  }
+}

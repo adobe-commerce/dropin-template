@@ -1,3 +1,4 @@
+import { describe, it, expect } from '@adobe-commerce/elsie/tests/dom';
 import { render } from './render';
 
 describe('render', () => {
@@ -9,8 +10,7 @@ describe('render', () => {
 
     await render.render(Container, {})(root);
 
-    expect(root.innerHTML).toBe(
-      '<div class="elsie-base-design"><div>container</div></div>'
-    );
+    expect(root.classList.contains('dropin-design')).toBe(true);
+    expect(root.innerHTML).toBe('<div>container</div>');
   });
 });

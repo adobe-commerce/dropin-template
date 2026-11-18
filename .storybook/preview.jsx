@@ -1,4 +1,7 @@
-import { DocsPage, DocsContainer } from '@storybook/addon-docs';
+import {
+  DocsPage,
+  DocsContainer,
+} from '@adobe-commerce/elsie/storybook/blocks';
 import { initializers } from '@adobe-commerce/elsie/lib';
 import { events } from '@adobe-commerce/event-bus';
 import { Provider } from '../src/render/Provider';

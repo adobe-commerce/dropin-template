@@ -1,21 +1,7 @@
-import { name } from '../.elsie';
+import { createConfig } from '@adobe-commerce/elsie/storybook/config';
+import config from '../.elsierc.json' with { type: 'json' };
 
-export const stories = [
-  {
-    directory: '../src',
-    titlePrefix: name,
-  },
-];
-
-export const framework = '@storybook/preact-webpack5';
-
-export const addons = [
-  '@storybook/addon-essentials',
-  '@storybook/addon-a11y',
-  '@storybook/addon-interactions',
-  '@storybook/addon-coverage',
-  '@adobe-commerce/elsie/config/storybook/addon',
-  '@adobe-commerce/elsie/storybook-stories', // core stories
-];
-
-export const staticDirs = ['./public'];
+export default createConfig({
+  stories: [{ directory: '../src', titlePrefix: config.name }],
+  staticDirs: ['./public'],
+});

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "elsie-migration": {
+      "source": "adobe-commerce/StorefrontSDK",
+      "commit": "760e616aabe863cddf516501fbd730b77895ca00",
+      "sourceType": "github",
+      "skillPath": "skills/elsie-migration/SKILL.md",
+      "computedHash": "9993b8ec1f391854a85950481d13c78b623e5b5ccc4c92270978c142a0e9999f"
+    }
+  }
+}
