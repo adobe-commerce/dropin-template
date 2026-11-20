@@ -1,3 +1,5 @@
+import { jest } from '@adobe-commerce/elsie/tests';
+
 // Override BroadcastChannel Mock
 jest.spyOn(Date, 'now').mockImplementation(() => 0);
 

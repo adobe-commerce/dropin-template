@@ -1,0 +1,10 @@
+allowBuilds:
+  "@parcel/watcher": true
+  "@swc/core": true
+  esbuild: true
+  msw: false
+  unrs-resolver: true
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - "@adobe-commerce/*"
+  - "@dropins/*"

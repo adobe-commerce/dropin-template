@@ -1,19 +1,17 @@
-const baseConfig = require('@adobe-commerce/elsie/config/jest');
+import { defineConfig } from '@adobe-commerce/elsie/configs/jest.js';
+import tsconfig from './tsconfig.json' with { type: 'json' };
 
-module.exports = {
-  ...baseConfig,
+const paths = Object.fromEntries(
+  Object.entries(tsconfig.compilerOptions.paths).filter(
+    ([alias]) => alias !== '@adobe-commerce/elsie/*',
+  ),
+);
 
-  setupFiles: [
-    ...baseConfig.setupFiles,
-    '<rootDir>/tests/__mocks__/browserMocks.ts',
-  ],
+export default defineConfig({
+  preset: 'preact',
 
-  coverageThreshold: {
-    global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100,
-    },
-  },
-};
+  setupFiles: ['<rootDir>/tests/__mocks__/browserMocks.ts'],
+  paths,
+
+  coverageThreshold: 100,
+});

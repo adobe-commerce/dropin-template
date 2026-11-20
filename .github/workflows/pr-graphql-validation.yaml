@@ -1,4 +1,4 @@
-name: 'GraphQL Validation'
+name: "GraphQL Validation"
 
 on:
   pull_request:
@@ -19,12 +19,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install --frozen-lockfile
 
       - name: Extract GraphQL endpoints from PR description
         id: endpoints
@@ -48,8 +51,9 @@ jobs:
             }
       - name: Determine final endpoints list
         id: final-endpoints
+        env:
+          ENDPOINTS_INPUT: ${{ steps.endpoints.outputs.endpoints }}
         run: |
-          ENDPOINTS_INPUT="${{ steps.endpoints.outputs.endpoints }}"
           if [ -n "$ENDPOINTS_INPUT" ]; then
             echo "Using endpoints from PR description."
             echo "endpoints=$ENDPOINTS_INPUT" >> "$GITHUB_OUTPUT"
@@ -61,12 +65,14 @@ jobs:
             echo "endpoints=${DEFAULT_ENDPOINTS}" >> "$GITHUB_OUTPUT"
           fi
       - name: Run GraphQL validation
+        env:
+          ENDPOINTS: ${{ steps.final-endpoints.outputs.endpoints }}
         run: |
-          IFS=',' read -ra ENDPOINT_ARRAY <<< "${{ steps.final-endpoints.outputs.endpoints }}"
-          ENDPOINT_FLAGS=""
+          IFS=',' read -ra ENDPOINT_ARRAY <<< "$ENDPOINTS"
+          ENDPOINT_FLAGS=()
           for url in "${ENDPOINT_ARRAY[@]}"; do
             CLEANED_URL=$(echo "$url" | xargs)
-            ENDPOINT_FLAGS="$ENDPOINT_FLAGS -e=$CLEANED_URL"
+            ENDPOINT_FLAGS+=("-e=$CLEANED_URL")
           done
-          echo "Running: npx elsie gql validate -s=${{ env.SOURCE_PATHS }} $ENDPOINT_FLAGS"
-          npx elsie gql validate -s=${{ env.SOURCE_PATHS }} $ENDPOINT_FLAGS
+          echo "Running: pnpm exec elsie gql validate -s=${{ env.SOURCE_PATHS }} ${ENDPOINT_FLAGS[*]}"
+          pnpm exec elsie gql validate -s="${{ env.SOURCE_PATHS }}" "${ENDPOINT_FLAGS[@]}"

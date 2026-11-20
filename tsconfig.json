@@ -1,10 +1,9 @@
 {
-  "extends": "@adobe-commerce/elsie/config/tsconfig-preact.json",
+  "extends": "@adobe-commerce/elsie/configs/tsconfig/preact.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "outDir": "dist",
-    "baseUrl": ".",
+    "rootDir": "./src",
+    "types": ["node"],
     "paths": {
       "@adobe-commerce/elsie/*": ["./node_modules/@adobe-commerce/elsie/src/*"],
       "@/dropin-name/*": ["./src/*"]
